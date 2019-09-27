@@ -1,0 +1,11 @@
+1-- Añadir nuevas peliculas
+2-- Añadir usuario
+3-- Borrar usuario
+4-- Modificar usuario
+5-- Permitir Login y por lo tanto sesiones de usuario
+6-- Mostrar el listado de todas las peliculas
+7-- Mostrar el listado de las peliculas filtrado (Por Genero)
+8-- Mostrar el listado de usuarios
+9-- Ver el ranking de peliculas más vistas
+10-- Ver el ranking de peliculas mejor valoradas
+11-- Mostrar peliculas que cada usuario tiene disponibles y no ha visto
