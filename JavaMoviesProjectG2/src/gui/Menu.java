@@ -29,6 +29,10 @@ public class Menu {
 		return LecturaDato.LeerInt();
 	}
 	
+	/**
+	 * 
+	 * @return Devuelve un int que representa la opcion elegida sobre "usuarios"
+	 */
 	public static int menuUsuario() {
 		
 		Writer.escribirPantalla("          **********************");
@@ -47,6 +51,10 @@ public class Menu {
 		return LecturaDato.LeerInt();
 	}
 	
+	/**
+	 * 
+	 * @return Devuelve un int que representa la opcion elegida sobre "películas"
+	 */
 	public static int menuPelicula() {
 		
 		Writer.escribirPantalla("          **********************");
