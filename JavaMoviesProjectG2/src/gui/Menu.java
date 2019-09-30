@@ -9,21 +9,65 @@ import utilities.Writer;
 
 public class Menu {
 	
+	/**
+	 * 
+	 * @return Devuelve un int que representa la opción elegida por el usuario (usuario o películas)
+	 */
 	public static int menuInicial() {
 		
-		Writer.escribirPantalla("           **********************");
-		Writer.escribirPantalla("           ***** MOVIE-FLIX *****");
-		Writer.escribirPantalla("           **********************");
-		Writer.escribirPantalla("\n");
-		Writer.escribirPantalla("***** Elige una de las siguientes opciones: *****");
-		Writer.escribirPantalla("***** 1. Crear usuario \n ***** 2. Modificar usuario **** \n");
-		Writer.escribirPantalla("*");
-		Writer.escribirPantalla("***** 3.Eliminar usuario");
-		Writer.escribirPantalla("*****");
-		LecturaDato.LeerInt("Elige una de las siguientes opciones\n"
-				+ "1--");
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				                + "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 1. Usuarios                           **\n"
+				+ "           ** 2. Peliculas                          **\n"
+				+ "           *******************************************");
 		
-		return 0;//Modificar
+		return LecturaDato.LeerInt();
+	}
+	
+	/**
+	 * 
+	 * @return Devuelve un int que representa la opcion elegida sobre "usuarios"
+	 */
+	public static int menuUsuario() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				+ "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 1. Crear usuario                      **\n"
+				+ "           ** 2. Modificar usuario                  **\n"
+				+ "           ** 3. Eliminar usuario                   **\n"
+				+ "           ** 4. Mostrar usuarios                   **\n"
+				+ "           *******************************************");
+		
+		return LecturaDato.LeerInt();
+	}
+	
+	/**
+	 * 
+	 * @return Devuelve un int que representa la opcion elegida sobre "películas"
+	 */
+	public static int menuPelicula() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				+ "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 1. Insertar Película                  **\n"
+				+ "           *******************************************");
+		
+		return LecturaDato.LeerInt();
 	}
 
 }
