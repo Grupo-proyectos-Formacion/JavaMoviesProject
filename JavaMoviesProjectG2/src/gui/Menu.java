@@ -11,9 +11,25 @@ public class Menu {
 	
 	/**
 	 * 
-	 * @return Devuelve un int que representa la opción elegida por el usuario
+	 * @return Devuelve un int que representa la opción elegida por el usuario (usuario o películas)
 	 */
 	public static int menuInicial() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				                + "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 1. Usuarios                           **\n"
+				+ "           ** 2. Peliculas                          **\n"
+				+ "           *******************************************");
+		
+		return LecturaDato.LeerInt();
+	}
+	
+	public static int menuUsuario() {
 		
 		Writer.escribirPantalla("          **********************");
 		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
@@ -28,7 +44,22 @@ public class Menu {
 				+ "           ** 4. Mostrar usuarios                   **\n"
 				+ "           *******************************************");
 		
-		return  LecturaDato.LeerInt();
+		return LecturaDato.LeerInt();
+	}
+	
+	public static int menuPelicula() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				+ "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 1. Insertar Película                  **\n"
+				+ "           *******************************************");
+		
+		return LecturaDato.LeerInt();
 	}
 
 }
