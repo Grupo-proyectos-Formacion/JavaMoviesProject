@@ -1,3 +1,7 @@
+/**
+ * @author Julián Bautista Vélez
+ */
+
 package model.dao;
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,7 +13,7 @@ import utilities.Writer;
 
 import java.sql.ResultSet;
 
-public class ConexionDB implements Dao {
+public class ConexionDB {
 	private Connection conn = null;
 	public ConexionDB(){
 		super();
