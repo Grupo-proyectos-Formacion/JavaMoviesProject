@@ -1,3 +1,8 @@
+/**
+ * @author Julian Bautista
+ * @author Daniel
+ */
+
 package model.dao;
 
 import java.sql.Connection;
