@@ -21,7 +21,7 @@ public class Menu {
 		Writer.escribirPantalla("***** 3.Eliminar usuario");
 		Writer.escribirPantalla("*****");
 		LecturaDato.LeerInt("Elige una de las siguientes opciones\n"
-				+ "1--")
+				+ "1--");
 		
 		return 0;//Modificar
 	}

@@ -9,6 +9,7 @@ public interface DaoUsuario {
 
 
 	public Boolean insertaUsuario(Usuario user);
-	public Boolean eliminaUsuario(int id);
+	public void eliminaUsuario(int id);
+	public Usuario buscarID(int id);
 	
 }

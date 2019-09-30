@@ -30,6 +30,17 @@ public class ConexionDB {
 		    System.out.println("VendorError: " + ex.getErrorCode());
 		}
 	}
+	public Connection getConn() {
+		return conn;
+	}
+	public void close() {
+        try {
+            this.conn.close();
+        } catch (SQLException se) {
+            System.out.println("Exception closing Connection: " + se);
+        }
+    }
+	
 }
 	
 	
