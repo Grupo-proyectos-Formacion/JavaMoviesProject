@@ -12,13 +12,7 @@ public class Pelicula {
 	 *
 	 */
 	private int idPelicula;
-	public int getIdPelicula() {
-		return idPelicula;
-	}
-
-	public void setIdPelicula(int idPelicula) {
-		this.idPelicula = idPelicula;
-	}
+	
 
 	/**
 	 * Título de película
@@ -34,8 +28,10 @@ public class Pelicula {
 	 * Categoría de película
 	 */
 	private String categoriaPelicula;
-	
-	
+	/**
+	 * visitas
+	 */
+	private int vecesVistas;
 	
 	/**
 	 * Constructor con 3 parámetros
@@ -61,6 +57,14 @@ public class Pelicula {
 		this.categoriaPelicula = categoriaPelicula;
 	}
 
+	public int getIdPelicula() {
+		return idPelicula;
+	}
+
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+	
 	public String getTituloPelicula() {
 		return tituloPelicula;
 	}

@@ -24,7 +24,7 @@ public class Main {
 		DaoPeliculaIMPL daoP = new DaoPeliculaIMPL();
 		
 
-		daoP.eliminaPelicula(LecturaDato.LeerInt("Selecciona una id de pelicula para eliminar"));
+		System.out.println(daoP.listarPeliculaCategoria(LecturaDato.LeerhTexto("Introduce una categoria para listar")));
 			
 	}
 	
