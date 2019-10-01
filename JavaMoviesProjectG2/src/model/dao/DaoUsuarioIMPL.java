@@ -1,6 +1,7 @@
 /**
  * @author Julian Bautista
  * @author Daniel
+ * @author Sisa Romero
  */
 
 package model.dao;
@@ -95,6 +96,32 @@ public class DaoUsuarioIMPL implements DaoUsuario {
  
         }
 		return null;
+    }
+	/**
+	@ejb.create-method Este metodo modifica en base de datos el usuario pasado por parmetro
+	*/
+	@Override
+	public void actualizaUsuario(Usuario user) {
+        
+        String sql = "UPDATE USUARIO SET nombreUsuario=?, apellidoUsuario=?, fechaNacimiento=?, fechaRegistro=? WHERE idUsuario=?";
+        PreparedStatement pstmt;
+                
+        try (Statement stmt = con.createStatement()) {
+            pstmt = this.con.prepareStatement(sql);
+            pstmt.setString(1, user.getNombreUsuario());
+            pstmt.setString(2, user.getApellidoUsuario());
+            pstmt.setTimestamp(3, new java.sql.Timestamp(user.getFechaNacimiento().getTime()));
+            pstmt.setTimestamp(4, new java.sql.Timestamp(user.getFechaRegistro().getTime()));
+            pstmt.setInt(5, user.getIdUsuario());
+           if (pstmt.executeUpdate() != 1) {
+               throw new SQLException("Error actualizando Usuario");
+           }
+       } catch (SQLException se) {
+           se.printStackTrace();
+       }
+        
+        
+        
     }
 
 }
