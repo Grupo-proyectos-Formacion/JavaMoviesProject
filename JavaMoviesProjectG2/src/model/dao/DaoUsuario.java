@@ -12,5 +12,6 @@ public interface DaoUsuario {
 	public void eliminaUsuario(int id);
 	public Usuario buscarID(int id);
 	public void actualizaUsuario(Usuario user);
+	public Usuario[] listarUsuario() throws Exception;
 	
 }
