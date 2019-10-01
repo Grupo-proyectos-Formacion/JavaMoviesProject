@@ -62,9 +62,25 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 
 	@Override
 	public void actualizaPelicula(Pelicula peli) {
-		// TODO Auto-generated method stub
-		
-	}
+	        
+	        String sql = "UPDATE PELICULA SET tituloPelicula=?, anyoPelicula=?, categoriaPelicula=? WHERE idPelicula=?";
+	        PreparedStatement pstmt;
+	        
+	
+			try (Statement stmt = con.createStatement()) {
+				pstmt = this.con.prepareStatement(sql);
+				pstmt.setString(1, peli.getTituloPelicula());
+				pstmt.setInt(2, peli.getAnyoPelicula());
+				pstmt.setString(3, peli.getCategoriaPelicula());
+				pstmt.setInt(4, peli.getIdPelicula());
+	            if (pstmt.executeUpdate() != 1) {
+	                throw new SQLException("Error adding Pelicula");
+	            }
+	        } catch (SQLException se) {
+	            se.printStackTrace();
+	            //MODIFICAR PARA USAR EL LOGIN
+	        }
+	    }
 	
 	
 	// Metodos privados
