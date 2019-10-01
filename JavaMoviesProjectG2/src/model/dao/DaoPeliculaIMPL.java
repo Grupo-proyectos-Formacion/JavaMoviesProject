@@ -1,3 +1,6 @@
+/**
+ * @author Julian Bautista
+ */
 package model.dao;
 
 import java.sql.Connection;
@@ -9,11 +12,15 @@ import model.Pelicula;
 
 public class DaoPeliculaIMPL implements DaoPelicula {
 
+	/**
+	 * con Conexion Creada por la clase ConexionBD
+	 */
 	private Connection con = null;
 
-    // package level access
+	/**
+	 * Constructor vacio           
+	 */
     public DaoPeliculaIMPL() {
-
         con = new ConexionDB().getConn();
     }
     
@@ -28,7 +35,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 			pstmt = this.con.prepareStatement(sql);
 			pstmt.setString(1, peli.getTituloPelicula());
 			pstmt.setInt(2, peli.getAnyoPelicula());
-			pstmt.setString(1, peli.getCategoriaPelicula());
+			pstmt.setString(3, peli.getCategoriaPelicula());
             if (pstmt.executeUpdate() != 1) {
                 throw new SQLException("Error adding Pelicula");
             }

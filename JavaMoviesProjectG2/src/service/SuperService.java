@@ -15,8 +15,8 @@ public class SuperService {
 		daoUsu.actualizaUsuario(usu);
 	}
 	
-	public static void borrarUsuaio(Usuario usu) {
-		daoUsu.actualizaUsuario(usu);
+	public static void borrarUsuario(Usuario usu) {
+		daoUsu.eliminaUsuario(usu.getIdUsuario());
 	}
 
 }
