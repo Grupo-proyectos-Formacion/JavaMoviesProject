@@ -41,9 +41,6 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 			pstmt.setString(2, user.getApellidoUsuario());
 			pstmt.setTimestamp(3, new java.sql.Timestamp(user.getFechaNacimiento().getTime()));
 			pstmt.setTimestamp(4, new java.sql.Timestamp(user.getFechaRegistro().getTime()));
-            /*String query = "INSERT INTO USUARIO VALUES (" + user.getIdUsuario() + ","
-                    + "'" + user.getApellidoUsuario() + "'," + "'" + user.fechaNacimiento + "',"
-                    + "'" + new java.sql.Date(user.getFechaNacimiento().getDate()) + "'," + new java.sql.Date(user.getFechaRegistro().getDate()) + ")";*/
             if (pstmt.executeUpdate() != 1) {
                 throw new SQLException("Error adding Usuario");
             }
@@ -130,19 +127,19 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 		ArrayList<Usuario> usu = new ArrayList<>();
 		try {
 			stmt = con.createStatement();
-			String query = "SELECT * FROM EMPLOYEE";
+			String query = "SELECT * FROM USUARIO";
 			ResultSet rs = stmt.executeQuery(query);
 	        if(!rs.next()) {
 	        	throw new SQLException("no ha devuelto valores");
 	        }
 	        while (rs.next()) {
-	            usu.add(new Usuario(rs.getInt("ID"), rs.getString("Nombre"),
-	                    rs.getString("Apellido"), rs.getDate("Fecha de nacimiento"),
-	                    rs.getDate("Fecha de alta")));
+	            usu.add(new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"),
+	                    rs.getString("apellidoUsuario"), rs.getDate("fechaNacimiento"),
+	                    rs.getDate("fechaRegistro")));
 	        }
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Writer.escribirLoggerWarning("La consulta para listar todos los usarios ha fallado" + e.getStackTrace());
+			//e.printStackTrace();
 		}
 		
         return usu;
