@@ -92,12 +92,36 @@ public class DaoPeliculaIMPL implements DaoPelicula {
         }
 		return null;
 	}
-
+	
+	/**
+	 * Método que actualiza Película
+	 * 
+	 * @param peli
+	 * 		  objeto pelicula
+	 * 
+	 */
 	@Override
 	public void actualizaPelicula(Pelicula peli) {
-		// TODO Auto-generated method stub
-		
-	}
+	        String sql = "UPDATE PELICULA SET tituloPelicula=?, anyoPelicula=?, categoriaPelicula=? WHERE idPelicula=?";
+	        PreparedStatement pstmt;
+	        
+	
+			try (Statement stmt = con.createStatement()) {
+				pstmt = this.con.prepareStatement(sql);
+				pstmt.setString(1, peli.getTituloPelicula());
+				pstmt.setInt(2, peli.getAnyoPelicula());
+				pstmt.setString(3, peli.getCategoriaPelicula());
+				pstmt.setInt(4, peli.getIdPelicula());
+	            if (pstmt.executeUpdate() != 1) {
+	                throw new SQLException("Error actualizando Pelicula");
+	            }
+	        } catch (SQLException e) {
+	        	
+	            Writer.escribirLoggerWarning("La sentencia para insertar usuario ha fallado " + e.getMessage());
+	        
+	        }
+	    }
+
 	/**
 	 * 
 	 * @return arrayList de peliculas
@@ -123,19 +147,17 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		return null;
 	}
 	
-	
-		/**
-		 * Insertar peliculas a la Base de Datos desde una lista
-		 * 
-		 *@param listaPelicula
-		 *		 lista de  peliculas 
-		 */
+	/**
+	* Insertar peliculas a la Base de Datos desde una lista
+	* 
+	*@param listaPelicula
+    *		 lista de  peliculas 
+	*/
 	@Override
 	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
 			
 		for(Pelicula n: listaPelicula) {
-			
-			 insertaPelicula(n);
+					 insertaPelicula(n);
 			
 		}				
 	}
