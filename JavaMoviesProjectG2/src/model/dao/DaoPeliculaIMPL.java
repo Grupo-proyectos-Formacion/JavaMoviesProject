@@ -55,7 +55,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		// TODO Auto-generated method stub
 		
 		System.out.println("selecciona la id para borrar la pelicula");
-		System.out.println(listarPelicula());
+
 
 		Pelicula peli = buscarID(id);
         if (peli == null) {
@@ -71,7 +71,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             //se.printStackTrace();
 
         }
-		
+		System.out.println(listarPelicula());
 		
 	}
 
