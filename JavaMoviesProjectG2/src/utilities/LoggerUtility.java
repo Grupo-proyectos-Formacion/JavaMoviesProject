@@ -16,7 +16,11 @@ public class LoggerUtility {
 	static Date fecha;
 	
 	
-	LoggerUtility() {
+	private static String getActualDateString() {
+		return new Date().toGMTString();
+	};
+	
+	public static void inicializaLogger() {
 		try {  
 			fecha = new Date();
 		    // This block configure the logger with handler and formatter  
@@ -26,19 +30,14 @@ public class LoggerUtility {
 		    fh.setFormatter(formatter);  
 
 		    // the following statement is used to log any messages  
-		    logger.info(getActualDateString() + "Logger creado at");  
+		    logger.info( "Logger creado at " +getActualDateString());  
 
 		} catch (SecurityException e) {  
 		    e.printStackTrace();  
 		} catch (IOException e) {  
 		    e.printStackTrace();  
-		}  
+		}
 	}
-	
-	
-	private static String getActualDateString() {
-		return new Date().toGMTString();
-	};
 	/**
 	 * 
 	 * @param message el mensaje a imprimir en el log file

@@ -44,8 +44,8 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             if (pstmt.executeUpdate() != 1) {
                 throw new SQLException("Error adding Usuario");
             }
-        } catch (SQLException se) {
-            se.printStackTrace();
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La query para insertar usuario ha fallado " + e.getMessage());
             //MODIFICAR PARA USAR EL LOGIN
         }
 	}
@@ -112,8 +112,8 @@ public class DaoUsuarioIMPL implements DaoUsuario {
            if (pstmt.executeUpdate() != 1) {
                throw new SQLException("Error actualizando Usuario");
            }
-       } catch (SQLException se) {
-           se.printStackTrace();
+       } catch (SQLException e) {
+    	   Writer.escribirLoggerWarning("La consulta para actualizar usuario ha fallado "+ e.getMessage());
        }
         
         
@@ -127,7 +127,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 		ArrayList<Usuario> usu = new ArrayList<>();
 		try {
 			stmt = con.createStatement();
-			String query = "SELECT * FROM USUARIO";
+			String query = "SELECT * FROM ERROR";
 			ResultSet rs = stmt.executeQuery(query);
 	        if(!rs.next()) {
 	        	throw new SQLException("no ha devuelto valores");
@@ -138,7 +138,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	                    rs.getDate("fechaRegistro")));
 	        }
 		} catch (SQLException e) {
-			Writer.escribirLoggerWarning("La consulta para listar todos los usarios ha fallado" + e.getStackTrace());
+			Writer.escribirLoggerWarning("La consulta para listar todos los usarios ha fallado " + e.getMessage());
 			//e.printStackTrace();
 		}
 		

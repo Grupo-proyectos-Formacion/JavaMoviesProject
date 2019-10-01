@@ -22,7 +22,6 @@ public class SuperService {
 	}
 	
 	public static void eliminarPelicula(int Pelicula) {
-        
         daoPeli.eliminaPelicula(Pelicula);
     }
 
