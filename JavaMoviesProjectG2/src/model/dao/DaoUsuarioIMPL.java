@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 import model.dao.ConexionDB;
@@ -123,5 +124,26 @@ public class DaoUsuarioIMPL implements DaoUsuario {
         
         
     }
+	
+	
+	public  Usuario[]  listarUsuario() throws Exception {
+		
+		Statement stmt = con.createStatement();
+		String query = "SELECT * FROM EMPLOYEE";
+        ResultSet rs = stmt.executeQuery(query);
+        // Create an ArrayList to save resulting records
+        ArrayList<Usuario> usu = new ArrayList<>();
+        // Iterate through the results and create Employee objects
+        while (rs.next()) {
+            usu.add(new Usuario(rs.getInt("ID"), rs.getString("Nombre"),
+                    rs.getString("Apellido"), rs.getDate("Fecha de nacimiento"),
+                    rs.getDate("Fecha de alta")));
+        }
+        return usu.toArray(new Usuario[0]);
+		
+
+	}
+	
+	
 
 }
