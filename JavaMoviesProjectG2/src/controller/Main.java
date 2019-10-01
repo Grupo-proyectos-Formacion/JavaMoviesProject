@@ -1,5 +1,6 @@
 package controller;
 
+import java.sql.SQLException;
 import java.util.Date;
 
 import model.Usuario;
@@ -16,7 +17,12 @@ public class Main {
 		
 		daoU.insertaUsuario(us);
 		daoU.eliminaUsuario(3);
-		
+		try {
+			daoU.listarUsuario();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 
 	}
