@@ -14,5 +14,10 @@ public class SuperService {
 	public static void borrarUsuaio(Usuario usu) {
 		daoUsu.actualizaUsuario(usu);
 	}
-
+	
+	public static void listarUsuario() throws Exception {
+		daoUsu.listarUsuario();
+	}
 }
+
+

@@ -126,20 +126,27 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
 	
 	
-	public  Usuario[]  listarUsuario() throws Exception {
+	public  void  listarUsuario() throws Exception {
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM usuario";
+	        ResultSet rs = stmt.executeQuery(query);
+	        // Create an ArrayList to save resulting records
+	        ArrayList<Usuario> usu = new ArrayList<>();
+	        // Iterate through the results and create Employee objects
+	        while (rs.next()) {
+	            usu.add(new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"),
+	                    rs.getString("apellidoUsuario"), rs.getDate("fechaNacimiento"),
+	                    rs.getDate("fechaRegistro")));
+	        }
+	       
+	        	System.out.println(usu);
+	        
+
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
 		
-		Statement stmt = con.createStatement();
-		String query = "SELECT * FROM EMPLOYEE";
-        ResultSet rs = stmt.executeQuery(query);
-        // Create an ArrayList to save resulting records
-        ArrayList<Usuario> usu = new ArrayList<>();
-        // Iterate through the results and create Employee objects
-        while (rs.next()) {
-            usu.add(new Usuario(rs.getInt("ID"), rs.getString("Nombre"),
-                    rs.getString("Apellido"), rs.getDate("Fecha de nacimiento"),
-                    rs.getDate("Fecha de alta")));
-        }
-        return usu.toArray(new Usuario[0]);
 		
 
 	}

@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.Writer;
 import java.sql.SQLException;
 import java.util.Date;
 
@@ -10,21 +11,15 @@ import utilities.LecturaDato;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		ConexionDB conn = new ConexionDB();
-		Usuario us = new Usuario("julian","Bautista Velez", LecturaDato.LeerFecha() ,LecturaDato.LeerFecha());
+
 		DaoUsuarioIMPL daoU = new DaoUsuarioIMPL();
 		
-		daoU.insertaUsuario(us);
-		daoU.eliminaUsuario(3);
-		try {
-			daoU.listarUsuario();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 		
-
+		
+			daoU.listarUsuario();
+		
 	}
 
 }
