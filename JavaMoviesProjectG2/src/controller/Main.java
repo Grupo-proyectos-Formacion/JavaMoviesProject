@@ -3,6 +3,7 @@ package controller;
 import java.sql.SQLException;
 import java.util.Date;
 
+import gui.Menu;
 import model.Pelicula;
 import model.Usuario;
 import model.dao.ConexionDB;
@@ -21,7 +22,7 @@ public class Main {
 		daoU.eliminaUsuario(3);*/
 		
 		
-		Menu.menuTareaCompletada();
+		Menu.menuCrearPelicula();
 	}
 
 }
