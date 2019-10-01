@@ -124,7 +124,6 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	
-	// Metodos privados
 		/**
 		 * Insertar peliculas a la Base de Datos desde una lista
 		 * 
