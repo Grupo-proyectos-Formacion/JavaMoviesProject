@@ -1,12 +1,14 @@
 package controller;
 
 import java.sql.SQLException;
+import model.dao.*;
 import java.util.Date;
 
 import gui.Menu;
 import model.Pelicula;
 import model.Usuario;
 import model.dao.ConexionDB;
+import model.dao.DaoPelicula;
 import model.dao.DaoPeliculaIMPL;
 import model.dao.DaoUsuarioIMPL;
 import utilities.LecturaDato;
@@ -22,7 +24,9 @@ public class Main {
 		daoU.eliminaUsuario(3);*/
 		
 		
-		Menu.menuCrearPelicula();
+		DaoPelicula a = new DaoPeliculaIMPL();
+		System.out.println(a.listarPeliculaNoVista());
+		
 	}
 
 }

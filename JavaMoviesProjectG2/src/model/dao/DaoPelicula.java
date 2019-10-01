@@ -10,4 +10,6 @@ public interface DaoPelicula {
 	public Pelicula buscarID(int id);
 	public void actualizaPelicula(Pelicula peli);
 	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula);
+	public ArrayList<Pelicula> listarPeliculaValoracion(int n);
+	public ArrayList<Pelicula> listarPeliculaNoVista();
 }

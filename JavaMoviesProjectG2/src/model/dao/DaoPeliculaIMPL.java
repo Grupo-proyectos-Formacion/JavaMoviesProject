@@ -103,6 +103,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	 * @return arrayList de peliculas
 	 */
 	
+	
 	public ArrayList<Pelicula> listarPelicula(){
 		
 		
@@ -121,6 +122,52 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 			e.printStackTrace();
 			}
 		return null;
+	}
+	
+	/**
+	 * @return Devuelve arraylist de películas ordenadas por valoración
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaValoracion(int n){
+		
+		ArrayList<Pelicula> pelis = new ArrayList<>();
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula ORDER BY valoracionPelicula DESC LIMIT "+ n;
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	        	return pelis;
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		return pelis;
+	}
+	
+	/**
+	 * @return Devuelve arraylist de películas no vistas
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaNoVista(){
+		
+		ArrayList<Pelicula> pelis = new ArrayList<>();
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula WHERE visualizacionPelicula = 0";
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	        	return pelis;
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		return pelis;
 	}
 	
 	
