@@ -5,11 +5,13 @@
 package service;
 
 import model.Usuario;
+import model.dao.DaoPeliculaIMPL;
 import model.dao.DaoUsuarioIMPL;
 
 public class SuperService {
 	
 	static DaoUsuarioIMPL daoUsu = new DaoUsuarioIMPL();
+	static DaoPeliculaIMPL daoPeli = new DaoPeliculaIMPL();
 	
 	public static void actualizarUsuario(Usuario usu) {
 		daoUsu.actualizaUsuario(usu);
@@ -19,4 +21,15 @@ public class SuperService {
 		daoUsu.eliminaUsuario(usu.getIdUsuario());
 	}
 
+	public static void listarUsuario() throws Exception {
+		daoUsu.listarUsuario();
+	}
+		
+	public static void eliminarPelicula(int Pelicula) {	    
+		daoPeli.eliminaPelicula(Pelicula);
+	 }
+			
+	public static void listarPelicula() {
+		daoPeli.ListarPelicula();				
+	}
 }
