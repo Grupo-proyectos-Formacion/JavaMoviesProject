@@ -90,6 +90,9 @@ public class Menu {
 				+ "           ** 2. Modificar película                 **\n"
 				+ "           ** 3. Eliminar película                  **\n"
 				+ "           ** 4. Mostrar películas                  **\n"
+				+ "           ** 5. Ordenar por más vistas             **\n"
+				+ "           ** 6. Ordenar por más valoradas          **\n"
+				+ "           ** 7. Películas no vistas                **\n"
 				+ "           *******************************************");
 		
 		return LecturaDato.LeerInt();

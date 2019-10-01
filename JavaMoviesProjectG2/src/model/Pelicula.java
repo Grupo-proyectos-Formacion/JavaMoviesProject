@@ -15,6 +15,11 @@ public class Pelicula {
 	private String tituloPelicula;
 	
 	/**
+	 * Valoracion de película
+	 */
+	private int valoracionPelicula;
+	
+	/**
 	 * Año de película
 	 */
 	private int anyoPelicula;
@@ -45,7 +50,7 @@ public class Pelicula {
 	}
 	
 	/**
-	 * Constructor con 4 parámetros
+	 * Constructor con 5 parámetros
 	 * @param idPelicula
 	 * Id de la pelicula
 	 * @param titulo
@@ -54,12 +59,15 @@ public class Pelicula {
 	 * Año película
 	 * @param categoria
 	 * Categoría película
+	 * @param valoracion
+	 * Valoracion de la película
 	 */
-	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
+	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula) {
 		this.idPelicula=idPelicula;
 		this.tituloPelicula = tituloPelicula;
 		this.anyoPelicula = anyoPelicula;
 		this.categoriaPelicula = categoriaPelicula;
+		this.valoracionPelicula = valoracionPelicula;
 	}
 
 	public String getTituloPelicula() {
@@ -84,6 +92,22 @@ public class Pelicula {
 
 	public void setCategoriaPelicula(String categoriaPelicula) {
 		this.categoriaPelicula = categoriaPelicula;
+	}
+
+	public int getIdPelicula() {
+		return idPelicula;
+	}
+
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+
+	public int getValoracionPelicula() {
+		return valoracionPelicula;
+	}
+
+	public void setValoracionPelicula(int valoracionPelicula) {
+		this.valoracionPelicula = valoracionPelicula;
 	}
 
 	@Override

@@ -85,7 +85,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
                 return null;
             }
             return (new Pelicula(rs.getInt("idPelicula"), rs.getString("nombrePelicula"),
-                    rs.getInt("anio"), rs.getString("categoriaPelicula")));
+                    rs.getInt("anio"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
         } catch (SQLException se) {
             
  
@@ -113,7 +113,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	        ArrayList<Pelicula> peli = new ArrayList<>();
 	        while (rs.next()) {
 	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
-	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
 	        }
 	        	return peli;
 	        
