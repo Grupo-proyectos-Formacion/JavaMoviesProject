@@ -5,7 +5,10 @@
 package model;
 
 public class Pelicula {
-	
+	/**
+	 * Id de la pelicula
+	 */
+	private int idPelicula;
 	/**
 	 * Título de película
 	 */
@@ -36,6 +39,24 @@ public class Pelicula {
 	 */
 	public Pelicula(String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
 		
+		this.tituloPelicula = tituloPelicula;
+		this.anyoPelicula = anyoPelicula;
+		this.categoriaPelicula = categoriaPelicula;
+	}
+	
+	/**
+	 * Constructor con 4 parámetros
+	 * @param idPelicula
+	 * Id de la pelicula
+	 * @param titulo
+	 * Título película
+	 * @param anyo
+	 * Año película
+	 * @param categoria
+	 * Categoría película
+	 */
+	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
+		this.idPelicula=idPelicula;
 		this.tituloPelicula = tituloPelicula;
 		this.anyoPelicula = anyoPelicula;
 		this.categoriaPelicula = categoriaPelicula;

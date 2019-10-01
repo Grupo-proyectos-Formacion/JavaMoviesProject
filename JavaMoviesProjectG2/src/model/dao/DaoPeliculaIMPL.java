@@ -6,11 +6,13 @@ package model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Pelicula;
+import utilities.Writer;
 
 public class DaoPeliculaIMPL implements DaoPelicula {
 
@@ -52,17 +54,47 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	public void eliminaPelicula(int id) {
 		// TODO Auto-generated method stub
 		
+		System.out.println("selecciona la id para borrar la pelicula");
+
+
+		Pelicula peli = buscarID(id);
+        if (peli == null) {
+        	Writer.escribirPantalla("La pelicula se ha borrado");
+            //LOGGEAR ERROR
+        }
+        try (Statement stmt = con.createStatement()) {
+            String query = "DELETE FROM pelicula WHERE idPelicula=" + id;
+            if (stmt.executeUpdate(query) != 1) {
+            	System.out.println("La pelicula con id"+ id+ "ha sido borrada");
+            }
+        } catch (SQLException se) {
+            //se.printStackTrace();
+
+        }
+		System.out.println(listarPelicula());
+		
 	}
 
 	@Override
 	public Pelicula buscarID(int id) {
 		// TODO Auto-generated method stub
+		try (Statement stmt = con.createStatement()) {
+            String query = "SELECT * FROM pelicula WHERE ID=" + id;
+            ResultSet rs = stmt.executeQuery(query);
+            if (!rs.next()) {
+                return null;
+            }
+            return (new Pelicula(rs.getInt("idPelicula"), rs.getString("nombrePelicula"),
+                    rs.getInt("anio"), rs.getString("categoriaPelicula")));
+        } catch (SQLException se) {
+            
+ 
+        }
 		return null;
 	}
 
 	@Override
 	public void actualizaPelicula(Pelicula peli) {
-	        
 	        String sql = "UPDATE PELICULA SET tituloPelicula=?, anyoPelicula=?, categoriaPelicula=? WHERE idPelicula=?";
 	        PreparedStatement pstmt;
 	        
@@ -81,10 +113,34 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            //MODIFICAR PARA USAR EL LOGIN
 	        }
 	    }
+		// TODO Auto-generated method stub
+	}
+	/**
+	 * 
+	 * @return arrayList de peliculas
+	 */
+	
+	public ArrayList<Pelicula> listarPelicula(){
+		
+		
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula";
+	        ResultSet rs = stmt.executeQuery(query);
+	        ArrayList<Pelicula> peli = new ArrayList<>();
+	        while (rs.next()) {
+	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	        }
+	        	return peli;
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		return null;
+	}
 	
 	
-	// Metodos privados
-		/**
 		 * Insertar peliculas a la Base de Datos desde una lista
 		 * 
 		 *@param listaPelicula

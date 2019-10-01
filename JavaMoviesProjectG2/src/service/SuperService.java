@@ -25,13 +25,9 @@ public class SuperService {
         daoPeli.eliminaPelicula(Pelicula);
     }
 
-	public static void listarUsuario() throws Exception {
+	public static void listarUsuario(){
 		daoUsu.listarUsuario();
 	}
-		
-	public static void eliminarPelicula(int Pelicula) {	    
-		daoPeli.eliminaPelicula(Pelicula);
-	 }
 			
 	public static void listarPelicula() {
 		daoPeli.listarPelicula();				
