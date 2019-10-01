@@ -1,6 +1,7 @@
 /**
  * @author Daniel
  * @author Sisa Romero
+ * @author Julian Bautista
  */
 package service;
 
@@ -31,5 +32,13 @@ public class SuperService {
 			
 	public static void listarPelicula() {
 		daoPeli.listarPelicula();				
+	}
+	
+	public static void listarPeliculaCategoria(String categoria) {
+		daoPeli.listarPeliculaCategoria(String categoria);
+	}
+	
+	public static void listarPeliculaNoVistas(String categoria) {
+		daoPeli.listarPeliculaNoVistas();
 	}
 }
