@@ -14,14 +14,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		ConexionDB conn = new ConexionDB();
-		Pelicula peli = new Pelicula("prueba1",1999,"drama");
-		DaoPeliculaIMPL daoP = new DaoPeliculaIMPL();
-		try {
-			daoP.insertaPelicula(peli);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		DaoUsuarioIMPL daoUsuario = new DaoUsuarioIMPL();
+		System.out.println(daoUsuario.listarUsuario().toString());
+		
 		
 
 	}

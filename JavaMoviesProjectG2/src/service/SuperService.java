@@ -20,6 +20,10 @@ public class SuperService {
 	public static void borrarUsuario(Usuario usu) {
 		daoUsu.eliminaUsuario(usu.getIdUsuario());
 	}
+	
+	public static void eliminarPelicula(int Pelicula) {
+        daoPeli.eliminaPelicula(Pelicula);
+    }
 
 	public static void listarUsuario() throws Exception {
 		daoUsu.listarUsuario();
@@ -30,6 +34,6 @@ public class SuperService {
 	 }
 			
 	public static void listarPelicula() {
-		daoPeli.ListarPelicula();				
+		daoPeli.listarPelicula();				
 	}
 }

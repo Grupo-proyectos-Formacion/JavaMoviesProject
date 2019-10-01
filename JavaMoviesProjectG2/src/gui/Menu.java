@@ -6,6 +6,9 @@ package gui;
 
 import utilities.LecturaDato;
 import utilities.Writer;
+import model.Pelicula;
+import model.Usuario;
+import utilities.CreadorObjeto;
 
 public class Menu {
 	
@@ -58,6 +61,12 @@ public class Menu {
 	 * @return Devuelve un objeto usuario
 	 */
 	public static Usuario menuCrearUsuario() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				                + "\n");
+		
 		 return CreadorObjeto.creaUsuario();
 	}
 	
@@ -72,7 +81,7 @@ public class Menu {
 		Writer.escribirPantalla("          **********************");
 		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
 		Writer.escribirPantalla("          **********************"
-				+ "\n");
+				                + "\n");
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
@@ -92,7 +101,30 @@ public class Menu {
 	 * @return Devuelve un objeto película
 	 */
 	public static Pelicula menuCrearPelicula() {
-		 return CreadorObjeto.creaUsuario();
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				                + "\n");
+		
+		 return CreadorObjeto.creaPelicula();
+	}
+	
+	
+	/**
+	 * Método indicador de tarea realizada
+	 */
+	public static void menuTareaCompletada() {
+		
+		Writer.escribirPantalla("          **********************");
+		Writer.escribirPantalla("          ***** MOVIE-FLIX *****");
+		Writer.escribirPantalla("          **********************"
+				+ "\n");
+
+		Writer.escribirPantalla("*******************************************\n"
+				+ "           **           ¡TAREA COMPLETADA!          **\n"
+				+ "           *******************************************");
+		
 	}
 	
 
