@@ -42,6 +42,7 @@ public class Menu {
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 0. Salir                              **\n"
 				+ "           ** 1. Crear usuario                      **\n"
 				+ "           ** 2. Modificar usuario                  **\n"
 				+ "           ** 3. Eliminar usuario                   **\n"
@@ -64,11 +65,17 @@ public class Menu {
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
-				+ "           ** 1. Insertar Película                  **\n"
+				+ "           ** 0. Salir                              **\n"
+				+ "           ** 1. Insertar película                  **\n"
+				+ "           ** 2. Modificar película                 **\n"
+				+ "           ** 3. Eliminar película                  **\n"
+				+ "           ** 4. Mostrar películas                  **\n"
 				+ "           *******************************************");
 		
 		return LecturaDato.LeerInt();
 	}
+	
+	
 
 }
 

@@ -6,48 +6,71 @@ package model;
 
 public class Pelicula {
 	
-	private String titulo;
-	private int anyo;
-	private String categoria;
+	/**
+	 * Título de película
+	 */
+	private String tituloPelicula;
+	
+	/**
+	 * Año de película
+	 */
+	private int anyoPelicula;
+	
+	/**
+	 * Categoría de película
+	 */
+	private String categoriaPelicula;
 	
 	public Pelicula() {
 		
 	}
 	
-	public Pelicula(String titulo, int anyo, String categoria) {
+	/**
+	 * Constructor con 3 parámetros
+	 * @param titulo
+	 * Título película
+	 * @param anyo
+	 * Año película
+	 * @param categoria
+	 * Categoría película
+	 */
+	public Pelicula(String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
 		
-		this.titulo = titulo;
-		this.anyo = anyo;
-		this.categoria = categoria;
+		this.tituloPelicula = tituloPelicula;
+		this.anyoPelicula = anyoPelicula;
+		this.categoriaPelicula = categoriaPelicula;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public String getTituloPelicula() {
+		return tituloPelicula;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public void setTituloPelicula(String tituloPelicula) {
+		this.tituloPelicula = tituloPelicula;
 	}
 
-	public int getAnyo() {
-		return anyo;
+	public int getAnyoPelicula() {
+		return anyoPelicula;
 	}
 
-	public void setAnyo(int anyo) {
-		this.anyo = anyo;
+	public void setAnyoPelicula(int anyoPelicula) {
+		this.anyoPelicula = anyoPelicula;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public String getCategoriaPelicula() {
+		return categoriaPelicula;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public void setCategoriaPelicula(String categoriaPelicula) {
+		this.categoriaPelicula = categoriaPelicula;
 	}
 
 	@Override
 	public String toString() {
-		return "Pelicula [titulo=" + titulo + ", anyo=" + anyo + ", categoria=" + categoria + "]";
+		return "Pelicula [tituloPelicula=" + tituloPelicula + ", anyoPelicula=" + anyoPelicula + ", categoriaPelicula="
+				+ categoriaPelicula + "]";
 	}
+
+	
 
 }
