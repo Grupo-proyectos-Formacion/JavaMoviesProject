@@ -54,8 +54,6 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	public void eliminaPelicula(int id) {
 		// TODO Auto-generated method stub
 		
-		System.out.println("selecciona la id para borrar la pelicula");
-
 
 		Pelicula peli = buscarID(id);
         if (peli == null) {
@@ -94,7 +92,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	/**
-	 * Método que actualiza Película
+	 * Mï¿½todo que actualiza Pelï¿½cula
 	 * 
 	 * @param peli
 	 * 		  objeto pelicula
@@ -161,5 +159,55 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 			
 		}				
 	}
+	/**
+	 * 
+	 * @return arrayList de peliculas
+	 */
+	
+	public ArrayList<Pelicula> listarPelicula(){
+		
+		
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula";
+	        ResultSet rs = stmt.executeQuery(query);
+	        ArrayList<Pelicula> peli = new ArrayList<>();
+	        while (rs.next()) {
+	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	        }
+	        	return peli;
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		return null;
+	}
+
+	public void crearPelicula() {
+		// TODO Auto-generated method stub
+		
+	}
+public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
+		
+		
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula WHERE categoriaPelicula='"+categoria+"'";
+	        ResultSet rs = stmt.executeQuery(query);
+	        ArrayList<Pelicula> peli = new ArrayList<>();
+	        while (rs.next()) {
+	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	        }
+	        	return peli;
+	        
+		}catch(Exception e) {
+			e.printStackTrace();
+			}
+		return null;
+	}
+	
+	
 
 }

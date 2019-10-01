@@ -117,8 +117,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
        }
         
         
-        
-    }
+     }
 	
 	
 	public  ArrayList<Usuario>  listarUsuario() {
@@ -147,6 +146,4 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 
 	}
 	
-	
-
 }

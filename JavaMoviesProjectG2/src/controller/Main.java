@@ -5,12 +5,21 @@ import model.dao.DaoPeliculaIMPL;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
+		ConexionDB conn = new ConexionDB();
 
-			DaoPeliculaIMPL daoPelis1 = new DaoPeliculaIMPL();
-			daoPelis1.actualizaPelicula(new Pelicula(10,"Amelie", 2001,"comedia"));
+
+		DaoUsuarioIMPL daoU = new DaoUsuarioIMPL();
+	
+
+		Pelicula peli = new Pelicula("prueba1",1999,"drama");
+		DaoPeliculaIMPL daoP = new DaoPeliculaIMPL();
 		
-		
+
+		System.out.println(daoP.listarPeliculaCategoria(LecturaDato.LeerhTexto("Introduce una categoria para listar")));
+			
 	}
+	
+	
 
 }
