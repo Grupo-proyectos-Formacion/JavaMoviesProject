@@ -1,5 +1,6 @@
 /**
- * @author Julian Bautista
+ * @author Julian Bautista 
+ * @author Sisa Romero
  */
 package model.dao;
 
@@ -122,6 +123,14 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		return null;
 	}
 	
+	
+	// Metodos privados
+		/**
+		 * Insertar peliculas a la Base de Datos desde una lista
+		 * 
+		 *@param listaPelicula
+		 *		 lista de  peliculas 
+		 */
 	@Override
 	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
 			
