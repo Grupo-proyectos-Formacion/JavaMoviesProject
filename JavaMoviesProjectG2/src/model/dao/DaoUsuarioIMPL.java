@@ -126,7 +126,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
 	
 	
-	public  void  listarUsuario() throws Exception {
+	public  ArrayList<Usuario>  listarUsuario() throws Exception {
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM usuario";
@@ -140,12 +140,13 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	                    rs.getDate("fechaRegistro")));
 	        }
 	       
-	        	System.out.println(usu);
+	        	return usu;
 	        
 
 		}catch(Exception e) {
 			e.printStackTrace();
 			}
+		return null;
 		
 		
 

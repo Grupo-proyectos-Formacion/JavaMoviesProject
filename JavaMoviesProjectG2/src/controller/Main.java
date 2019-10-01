@@ -18,7 +18,7 @@ public class Main {
 		
 		
 		
-			daoU.listarUsuario();
+			System.out.println(daoU.listarUsuario());
 		
 	}
 
