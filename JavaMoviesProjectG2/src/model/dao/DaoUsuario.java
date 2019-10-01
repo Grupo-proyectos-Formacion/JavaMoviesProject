@@ -3,6 +3,8 @@
  */
 package model.dao;
 
+import java.util.ArrayList;
+
 import model.Usuario;
 
 public interface DaoUsuario {
@@ -12,6 +14,6 @@ public interface DaoUsuario {
 	public void eliminaUsuario(int id);
 	public Usuario buscarID(int id);
 	public void actualizaUsuario(Usuario user);
-	public Usuario[] listarUsuario() throws Exception;
+	public ArrayList<Usuario> listarUsuario() throws Exception;
 	
 }
