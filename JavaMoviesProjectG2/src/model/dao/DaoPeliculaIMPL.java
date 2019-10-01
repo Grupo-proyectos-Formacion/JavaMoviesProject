@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 import model.Pelicula;
 
@@ -62,6 +63,16 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	public void actualizaPelicula(Pelicula peli) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	@Override
+	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
+			
+		for(Pelicula n: listaPelicula) {
+			
+			 insertaPelicula(n);
+			
+		}				
 	}
 
 }
