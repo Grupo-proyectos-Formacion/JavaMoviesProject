@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Date;
 
 import model.dao.ConexionDB;
@@ -28,7 +29,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
     
 	@Override
-	public Boolean insertaUsuario(Usuario user) {
+	public void insertaUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		
@@ -50,8 +51,6 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             se.printStackTrace();
             //MODIFICAR PARA USAR EL LOGIN
         }
-		
-		return null;
 	}
 
 	/**
@@ -123,5 +122,34 @@ public class DaoUsuarioIMPL implements DaoUsuario {
         
         
     }
+	
+	
+	public  ArrayList<Usuario>  listarUsuario() {
+		
+		Statement stmt;
+		ArrayList<Usuario> usu = new ArrayList<>();
+		try {
+			stmt = con.createStatement();
+			String query = "SELECT * FROM EMPLOYEE";
+			ResultSet rs = stmt.executeQuery(query);
+	        if(!rs.next()) {
+	        	throw new SQLException("no ha devuelto valores");
+	        }
+	        while (rs.next()) {
+	            usu.add(new Usuario(rs.getInt("ID"), rs.getString("Nombre"),
+	                    rs.getString("Apellido"), rs.getDate("Fecha de nacimiento"),
+	                    rs.getDate("Fecha de alta")));
+	        }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+        return usu;
+		
+
+	}
+	
+	
 
 }
