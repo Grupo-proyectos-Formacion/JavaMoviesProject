@@ -41,11 +41,11 @@ public class SuperService {
 	}
 	
 	public static void listarPeliculaCategoria(String categoria) {
-		daoPeli.listarPeliculaCategoria(String categoria);
+		daoPeli.listarPeliculaCategoria(categoria);
 	}
 	
-	public static void listarPeliculaNoVistas(String categoria) {
-		daoPeli.listarPeliculaNoVistas();
+	public static void listarPeliculaNoVistas() {
+		daoPeli.listarPeliculaNoVista();
 	}
 
 	public static void listarUsuario(Usuario usu) {
@@ -53,6 +53,14 @@ public class SuperService {
 	}
 	
 	public static void insertarPelicula(Pelicula peli) {
-		daoPeli.crearPelicula();
+		daoPeli.insertaPelicula(peli);
 	}
+	
+	public static void actualizarPelicula(Pelicula peli) {
+        daoPeli.actualizaPelicula(peli);
+    }
+	
+	public static void listarPeliculaPorValoracion(int numero) {
+        daoPeli.listarPeliculaPorValoracion(numero);
+    }
 }

@@ -121,28 +121,29 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	    }
 
 	/**
+	 * listar todas las peliculas
 	 * 
 	 * @return arrayList de peliculas
 	 */
 	
 	public ArrayList<Pelicula> listarPelicula(){
 		
-		
+		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM pelicula";
 	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
 	        while (rs.next()) {
-	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
 	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
 	        }
-	        	return peli;
+	        	return pelis;
 	        
 		}catch(Exception e) {
+			Writer.escribirLoggerWarning("La consulta" + e.getMessage());
 			e.printStackTrace();
 			}
-		return null;
+		return pelis;
 	}
 	
 	/**
@@ -162,40 +163,13 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	/**
 	 * 
 	 * @return arrayList de peliculas
-	 */
-	
-	public ArrayList<Pelicula> listarPelicula(){
-		
-		
-		try {
-			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM pelicula";
-	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
-	        while (rs.next()) {
-	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
-	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
-	        }
-	        	return peli;
-	        
-		}catch(Exception e) {
-			e.printStackTrace();
-			}
-		return null;
-	}
-
-	public void crearPelicula() {
-		// TODO Auto-generated method stub
-		
-	}
-public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
-		
-		
+	 */	
+	public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
+		ArrayList<Pelicula> peli = new ArrayList<>();
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM pelicula WHERE categoriaPelicula='"+categoria+"'";
 	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
 	        while (rs.next()) {
 	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
 	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
@@ -203,9 +177,54 @@ public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
 	        	return peli;
 	        
 		}catch(Exception e) {
-			e.printStackTrace();
+			Writer.escribirLoggerWarning("La consulta para filtrar por categoria ha fallado" + e.getMessage());
 			}
-		return null;
+		return peli;
+	}
+	/**
+	 * @return Devuelve arraylist de películas ordenadas por valoración
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaPorValoracion(int n){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula ORDER BY valoracionPelicula DESC LIMIT "+ n;
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	        e.printStackTrace();
+	        }
+	    return pelis;
+	}
+	
+	/**
+	 * @return Devuelve arraylist de películas no vistas
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaNoVista(){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula WHERE visualizacionPelicula = 0";
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	        e.printStackTrace();
+	        }
+	    return pelis;
 	}
 	
 	

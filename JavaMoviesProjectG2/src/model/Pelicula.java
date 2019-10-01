@@ -9,13 +9,7 @@ public class Pelicula {
 	/**
 	 * Id de la pelicula
 	 */
-	private int idPelicula;
-	/**
-	 * Id pelicula
-	 *
-	 */
-	private int idPelicula;
-	
+	private int idPelicula;	
 
 	/**
 	 * Título de película
@@ -35,6 +29,11 @@ public class Pelicula {
 	 * visitas
 	 */
 	private int vecesVistas;
+	
+	/**
+	 * Valoracion película
+	 */
+	private int valoracionPelicula;
 	
 	/**
 	 * Constructor con 3 parámetros
@@ -70,23 +69,26 @@ public class Pelicula {
 		this.categoriaPelicula = categoriaPelicula;
 	}
 	
-	
-
-	public int getIdPelicula() {
-		return idPelicula;
-	}
-
-	public void setIdPelicula(int idPelicula) {
-		this.idPelicula = idPelicula;
-	}
-
-	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
-		super();
-		this.idPelicula = idPelicula;
-		this.tituloPelicula = tituloPelicula;
-		this.anyoPelicula = anyoPelicula;
-		this.categoriaPelicula = categoriaPelicula;
-	}
+	/**
+     * Constructor con 5 parámetros
+     * @param idPelicula
+     * Id de la pelicula
+     * @param titulo
+     * Título película
+     * @param anyo
+     * Año película
+     * @param categoria
+     * Categoría película
+     * @param valoracion
+     * Valoracion de la película
+     */
+    public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula) {
+        this.idPelicula=idPelicula;
+        this.tituloPelicula = tituloPelicula;
+        this.anyoPelicula = anyoPelicula;
+        this.categoriaPelicula = categoriaPelicula;
+        this.valoracionPelicula = valoracionPelicula;
+    }
 
 	public int getIdPelicula() {
 		return idPelicula;
