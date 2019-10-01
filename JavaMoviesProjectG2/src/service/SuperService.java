@@ -32,6 +32,16 @@ public class SuperService {
 	public static void insertarPelicula(Pelicula peli) {
 		daoPeli.crearPelicula();
 	}
+	
+	public static void listarPeliculaPorValoracion(int numero) {
+		daoPeli.listarPeliculaPorValoracion();
+	}
+	
+	public static void listarPeliculaNoVistas() {
+		daoPeli.listarPeliculaNoVistas();
+	}
+	
+
 }
 
 
