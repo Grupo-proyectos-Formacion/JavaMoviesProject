@@ -10,7 +10,7 @@ import utilities.Writer;
 public class Menu {
 	
 	/**
-	 * 
+	 * Método para mostrar menú inicial
 	 * @return Devuelve un int que representa la opción elegida por el usuario (usuario o películas)
 	 */
 	public static int menuInicial() {
@@ -28,9 +28,10 @@ public class Menu {
 		
 		return LecturaDato.LeerInt();
 	}
+
 	
 	/**
-	 * 
+	 * Método para mostrar opciones sobre usuario
 	 * @return Devuelve un int que representa la opcion elegida sobre "usuarios"
 	 */
 	public static int menuUsuario() {
@@ -42,6 +43,7 @@ public class Menu {
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
+				+ "           ** 0. Salir                              **\n"
 				+ "           ** 1. Crear usuario                      **\n"
 				+ "           ** 2. Modificar usuario                  **\n"
 				+ "           ** 3. Eliminar usuario                   **\n"
@@ -52,7 +54,17 @@ public class Menu {
 	}
 	
 	/**
-	 * 
+	 * Método para llamar al metodo crear usuario
+	 * @return Devuelve un objeto usuario
+	 */
+	public static Usuario menuCrearUsuario() {
+		 return CreadorObjeto.creaUsuario();
+	}
+	
+	
+
+	/**
+	 * Método para mostrar opciones sobre película
 	 * @return Devuelve un int que representa la opcion elegida sobre "películas"
 	 */
 	public static int menuPelicula() {
@@ -64,11 +76,26 @@ public class Menu {
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
-				+ "           ** 1. Insertar Película                  **\n"
+				+ "           ** 0. Salir                              **\n"
+				+ "           ** 1. Insertar película                  **\n"
+				+ "           ** 2. Modificar película                 **\n"
+				+ "           ** 3. Eliminar película                  **\n"
+				+ "           ** 4. Mostrar películas                  **\n"
 				+ "           *******************************************");
 		
 		return LecturaDato.LeerInt();
 	}
+	
+	
+	/**
+	 * Método para llamar al método crear película
+	 * @return Devuelve un objeto película
+	 */
+	public static Pelicula menuCrearPelicula() {
+		 return CreadorObjeto.creaUsuario();
+	}
+	
+
 
 }
 

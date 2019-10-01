@@ -12,7 +12,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LecturaDato {
-	
+		
+	  /**
+	   * @return Devuelve un int introducido por el usuario
+	   */
 	  @SuppressWarnings("resource")
 	    public static int LeerInt(){
 	        boolean exito;
@@ -31,22 +34,41 @@ public class LecturaDato {
 	        
 	    }
 	    
+	  /**
+	   * 
+	   * @param Recibe un String para mostrarlo al usuario
+	   * @return Devuelve una llamada al método LeerInt()
+	   */
 	    public static int LeerInt(String msg){
 	        System.out.println(msg);
 	        return LeerInt();
 	    }    
 	    
+	    
+	    /**
+	     * 
+	     * @return Devuelve el String introducido por el usuario
+	     */
 	    @SuppressWarnings("resource")
 	    public static String LeerTexto(){
 	        Scanner teclado=new Scanner(System.in);
 	        return teclado.nextLine();
 	    }
 	    
+	    /**
+	     * 
+	     * @param Recibe un String para mostrarlo al usuario
+	     * @return Devuelve una llamada al método LeerTexto()
+	     */
 	    public static String LeerhTexto(String msg){
 	        System.out.println(msg);
 	        return LeerTexto();
 	    }
 	    
+	    /**
+	     * 
+	     * @return Devuelve una fecha introducida por el usuario
+	     */
 	    public static Date LeerFecha() {
 	        Date date=new Date(); ///CHAPUZA
 	        String dateString ;

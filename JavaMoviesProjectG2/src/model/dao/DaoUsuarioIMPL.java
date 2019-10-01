@@ -29,7 +29,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
     
 	@Override
-	public Boolean insertaUsuario(Usuario user) {
+	public void insertaUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		
@@ -51,8 +51,6 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             se.printStackTrace();
             //MODIFICAR PARA USAR EL LOGIN
         }
-		
-		return null;
 	}
 
 	/**
@@ -122,18 +120,14 @@ public class DaoUsuarioIMPL implements DaoUsuario {
        }
         
         
-        
-    }
+     }
 	
-	
-	public  ArrayList<Usuario>  listarUsuario() throws Exception {
+	public  ArrayList<Usuario>  listarUsuario(){
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM usuario";
 	        ResultSet rs = stmt.executeQuery(query);
-	        // Create an ArrayList to save resulting records
 	        ArrayList<Usuario> usu = new ArrayList<>();
-	        // Iterate through the results and create Employee objects
 	        while (rs.next()) {
 	            usu.add(new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"),
 	                    rs.getString("apellidoUsuario"), rs.getDate("fechaNacimiento"),
@@ -142,16 +136,11 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	       
 	        	return usu;
 	        
-
 		}catch(Exception e) {
 			e.printStackTrace();
 			}
 		return null;
-		
-		
 
 	}
 	
-	
-
 }

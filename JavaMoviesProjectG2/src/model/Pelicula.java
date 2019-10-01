@@ -1,53 +1,96 @@
 /**
  * @author Luis
+ * @author Daniel
  */
 
 package model;
 
 public class Pelicula {
 	
-	private String titulo;
-	private int anyo;
-	private String categoria;
+	/**
+	 * Id pelicula
+	 *
+	 */
+	private int idPelicula;
+	public int getIdPelicula() {
+		return idPelicula;
+	}
+
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+
+	/**
+	 * Título de película
+	 */
+	private String tituloPelicula;
 	
-	public Pelicula() {
-		
-	}
+	/**
+	 * Año de película
+	 */
+	private int anyoPelicula;
 	
-	public Pelicula(String titulo, int anyo, String categoria) {
+	/**
+	 * Categoría de película
+	 */
+	private String categoriaPelicula;
+	
+	
+	
+	/**
+	 * Constructor con 3 parámetros
+	 * @param titulo
+	 * Título película
+	 * @param anyo
+	 * Año película
+	 * @param categoria
+	 * Categoría película
+	 */
+	public Pelicula(String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
 		
-		this.titulo = titulo;
-		this.anyo = anyo;
-		this.categoria = categoria;
+		this.tituloPelicula = tituloPelicula;
+		this.anyoPelicula = anyoPelicula;
+		this.categoriaPelicula = categoriaPelicula;
 	}
 
-	public String getTitulo() {
-		return titulo;
+	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
+		super();
+		this.idPelicula = idPelicula;
+		this.tituloPelicula = tituloPelicula;
+		this.anyoPelicula = anyoPelicula;
+		this.categoriaPelicula = categoriaPelicula;
 	}
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
+	public String getTituloPelicula() {
+		return tituloPelicula;
 	}
 
-	public int getAnyo() {
-		return anyo;
+	public void setTituloPelicula(String tituloPelicula) {
+		this.tituloPelicula = tituloPelicula;
 	}
 
-	public void setAnyo(int anyo) {
-		this.anyo = anyo;
+	public int getAnyoPelicula() {
+		return anyoPelicula;
 	}
 
-	public String getCategoria() {
-		return categoria;
+	public void setAnyoPelicula(int anyoPelicula) {
+		this.anyoPelicula = anyoPelicula;
 	}
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
+	public String getCategoriaPelicula() {
+		return categoriaPelicula;
+	}
+
+	public void setCategoriaPelicula(String categoriaPelicula) {
+		this.categoriaPelicula = categoriaPelicula;
 	}
 
 	@Override
 	public String toString() {
-		return "Pelicula [titulo=" + titulo + ", anyo=" + anyo + ", categoria=" + categoria + "]";
+		return "Pelicula [tituloPelicula=" + tituloPelicula + ", anyoPelicula=" + anyoPelicula + ", categoriaPelicula="
+				+ categoriaPelicula + "]";
 	}
+
+	
 
 }
