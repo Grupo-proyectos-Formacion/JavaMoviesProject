@@ -92,7 +92,14 @@ public class DaoPeliculaIMPL implements DaoPelicula {
         }
 		return null;
 	}
-
+	
+	/**
+	 * Método que actualiza Película
+	 * 
+	 * @param peli
+	 * 		  objeto pelicula
+	 * 
+	 */
 	@Override
 	public void actualizaPelicula(Pelicula peli) {
 	        String sql = "UPDATE PELICULA SET tituloPelicula=?, anyoPelicula=?, categoriaPelicula=? WHERE idPelicula=?";
@@ -106,15 +113,15 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 				pstmt.setString(3, peli.getCategoriaPelicula());
 				pstmt.setInt(4, peli.getIdPelicula());
 	            if (pstmt.executeUpdate() != 1) {
-	                throw new SQLException("Error adding Pelicula");
+	                throw new SQLException("Error actualizando Pelicula");
 	            }
-	        } catch (SQLException se) {
-	            se.printStackTrace();
-	            //MODIFICAR PARA USAR EL LOGIN
+	        } catch (SQLException e) {
+	        	
+	            Writer.escribirLoggerWarning("La sentencia para insertar usuario ha fallado " + e.getMessage());
+	        
 	        }
 	    }
-		// TODO Auto-generated method stub
-	}
+
 	/**
 	 * 
 	 * @return arrayList de peliculas
@@ -140,18 +147,17 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		return null;
 	}
 	
-	
-		 * Insertar peliculas a la Base de Datos desde una lista
-		 * 
-		 *@param listaPelicula
-		 *		 lista de  peliculas 
-		 */
+	/**
+	* Insertar peliculas a la Base de Datos desde una lista
+	* 
+	*@param listaPelicula
+    *		 lista de  peliculas 
+	*/
 	@Override
 	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
 			
 		for(Pelicula n: listaPelicula) {
-			
-			 insertaPelicula(n);
+					 insertaPelicula(n);
 			
 		}				
 	}

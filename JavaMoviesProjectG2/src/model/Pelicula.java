@@ -61,6 +61,16 @@ public class Pelicula {
 		this.anyoPelicula = anyoPelicula;
 		this.categoriaPelicula = categoriaPelicula;
 	}
+	
+	
+
+	public int getIdPelicula() {
+		return idPelicula;
+	}
+
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
+	}
 
 	public String getTituloPelicula() {
 		return tituloPelicula;
