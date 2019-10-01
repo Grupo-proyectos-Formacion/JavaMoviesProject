@@ -28,7 +28,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
     
 	@Override
-	public Boolean insertaUsuario(Usuario user) {
+	public void insertaUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		
@@ -50,8 +50,6 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             se.printStackTrace();
             //MODIFICAR PARA USAR EL LOGIN
         }
-		
-		return null;
 	}
 
 	/**
