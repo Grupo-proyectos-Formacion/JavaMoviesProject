@@ -34,6 +34,6 @@ public class SuperService {
 	 }
 			
 	public static void listarPelicula() {
-		daoPeli.ListarPelicula();				
+		daoPeli.listarPelicula();				
 	}
 }
