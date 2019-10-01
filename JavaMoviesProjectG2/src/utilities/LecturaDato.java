@@ -69,14 +69,14 @@ public class LecturaDato {
 	     * 
 	     * @return Devuelve una fecha introducida por el usuario
 	     */
-	    public static Date LeerFecha() {
-	        Date date=new Date(); ///CHAPUZA
+	    public static Date LeerFecha(String msg) {
+	        Date date=new Date(); 
 	        String dateString ;
 	        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	        Boolean exito;
 	        do {
 	            try {
-	                dateString = LecturaDato.LeerhTexto("\n Dame una fecha con el formato dd-mm-aaaa");
+	                dateString = LecturaDato.LeerhTexto(msg);
 	                date = formatter.parse(dateString);
 	                exito= true;
 	            } catch (ParseException ex) {
