@@ -25,15 +25,16 @@ public class Pelicula {
 	 * Categoría de película
 	 */
 	private String categoriaPelicula;
-	/**
-	 * visitas
-	 */
-	private int vecesVistas;
-	
+
 	/**
 	 * Valoracion película
 	 */
 	private int valoracionPelicula;
+	
+	/**
+	 * Visualizaciones de la película
+	 */
+	private int visualizacionPelicula;
 	
 	/**
 	 * Constructor con 3 parámetros
@@ -89,6 +90,30 @@ public class Pelicula {
         this.categoriaPelicula = categoriaPelicula;
         this.valoracionPelicula = valoracionPelicula;
     }
+    
+    /**
+     * Constructor con 5 parámetros
+     * @param idPelicula
+     * Id de la pelicula
+     * @param titulo
+     * Título película
+     * @param anyo
+     * Año película
+     * @param categoria
+     * Categoría película
+     * @param valoracion
+     * Valoracion de la película
+     * @param visualizacion
+     * Visualizaciones de la pelicula
+     */
+    public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula, int visualizacionPelicula) {
+        this.idPelicula=idPelicula;
+        this.tituloPelicula = tituloPelicula;
+        this.anyoPelicula = anyoPelicula;
+        this.categoriaPelicula = categoriaPelicula;
+        this.valoracionPelicula = valoracionPelicula;
+        this.visualizacionPelicula = visualizacionPelicula;
+    }
 
 	public int getIdPelicula() {
 		return idPelicula;
@@ -122,11 +147,30 @@ public class Pelicula {
 		this.categoriaPelicula = categoriaPelicula;
 	}
 
+	public int getValoracionPelicula() {
+		return valoracionPelicula;
+	}
+
+	public void setValoracionPelicula(int valoracionPelicula) {
+		this.valoracionPelicula = valoracionPelicula;
+	}
+
+	public int getVisualizacionPelicula() {
+		return visualizacionPelicula;
+	}
+
+	public void setVisualizacionPelicula(int visualizacionPelicula) {
+		this.visualizacionPelicula = visualizacionPelicula;
+	}
+
 	@Override
 	public String toString() {
-		return "Pelicula [tituloPelicula=" + tituloPelicula + ", anyoPelicula=" + anyoPelicula + ", categoriaPelicula="
-				+ categoriaPelicula + "]";
+		return "Id película=" + idPelicula + ", Título pelicula=" + tituloPelicula + ", Año  película="
+				+ anyoPelicula + ", Categoría película=" + categoriaPelicula + ", Valoración película="
+				+ valoracionPelicula + ", Visualización película=" + visualizacionPelicula + "]\n";
 	}
+
+	
 
 	
 

@@ -131,17 +131,16 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		try {
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM pelicula";
+			String query = "SELECT * FROM PELICULA";
 	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
 	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
-	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula")));
 	        }
 	        	return pelis;
-	        
 		}catch(Exception e) {
-			Writer.escribirLoggerWarning("La consulta" + e.getMessage());
-			e.printStackTrace();
+			Writer.escribirLoggerWarning("La consulta para listar todas las peliculas ha fallado: " + e.getMessage());
+			//e.printStackTrace();
 			}
 		return pelis;
 	}
