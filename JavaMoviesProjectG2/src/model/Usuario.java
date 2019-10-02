@@ -133,8 +133,9 @@ public class Usuario {
 
 		@Override
 		public String toString() {
-			return "Usuario =" + idUsuario + " nombre: " + nombreUsuario + " Apellido"
-					+ apellidoUsuario + " fecha de nacimiento: " + fechaNacimiento + " fecha de registro " + fechaRegistro+"\n";
+			return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", apellidoUsuario="
+					+ apellidoUsuario + ", fechaNacimiento=" + fechaNacimiento + ", fechaRegistro=" + fechaRegistro
+					+ "]";
 		}
 		
 		

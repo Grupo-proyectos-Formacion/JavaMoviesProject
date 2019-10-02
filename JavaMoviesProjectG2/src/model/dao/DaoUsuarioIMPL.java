@@ -29,7 +29,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
     
 	@Override
-	public void insertaUsuario(Usuario user) {
+	public void insertarUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		
@@ -41,14 +41,11 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 			pstmt.setString(2, user.getApellidoUsuario());
 			pstmt.setTimestamp(3, new java.sql.Timestamp(user.getFechaNacimiento().getTime()));
 			pstmt.setTimestamp(4, new java.sql.Timestamp(user.getFechaRegistro().getTime()));
-            /*String query = "INSERT INTO USUARIO VALUES (" + user.getIdUsuario() + ","
-                    + "'" + user.getApellidoUsuario() + "'," + "'" + user.fechaNacimiento + "',"
-                    + "'" + new java.sql.Date(user.getFechaNacimiento().getDate()) + "'," + new java.sql.Date(user.getFechaRegistro().getDate()) + ")";*/
             if (pstmt.executeUpdate() != 1) {
                 throw new SQLException("Error adding Usuario");
             }
-        } catch (SQLException se) {
-            se.printStackTrace();
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para insertar usuario ha fallado " + e.getMessage());
             //MODIFICAR PARA USAR EL LOGIN
         }
 	}
@@ -57,7 +54,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	@ejb.create-method este metodo borra el usuario dependiendo de su ID en la base de datos
 	*/
 	@Override
-	public void eliminaUsuario(int id) {
+	public void eliminarUsuario(int id) {
 		
 		Usuario usu = buscarID(id);
         if (usu == null) {
@@ -115,32 +112,66 @@ public class DaoUsuarioIMPL implements DaoUsuario {
            if (pstmt.executeUpdate() != 1) {
                throw new SQLException("Error actualizando Usuario");
            }
-       } catch (SQLException se) {
-           se.printStackTrace();
+       } catch (SQLException e) {
+    	   Writer.escribirLoggerWarning("La consulta para actualizar usuario ha fallado "+ e.getMessage());
        }
         
         
-     }
+        
+    }
 	
-	public  ArrayList<Usuario>  listarUsuario(){
+	
+<<<<<<< HEAD
+<<<<<<< HEAD
+	public  ArrayList<Usuario>  listarUsuario() throws Exception {
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM usuario";
 	        ResultSet rs = stmt.executeQuery(query);
+	        // Create an ArrayList to save resulting records
 	        ArrayList<Usuario> usu = new ArrayList<>();
+	        // Iterate through the results and create Employee objects
+=======
+	
+	public  ArrayList<Usuario>  listarUsuario() {
+		
+		Statement stmt;
+		ArrayList<Usuario> usu = new ArrayList<>();
+		try {
+			stmt = con.createStatement();
+			String query = "SELECT * FROM ERROR";
+			ResultSet rs = stmt.executeQuery(query);
+	        if(!rs.next()) {
+	        	throw new SQLException("no ha devuelto valores");
+	        }
+>>>>>>> branchJulian
 	        while (rs.next()) {
 	            usu.add(new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"),
 	                    rs.getString("apellidoUsuario"), rs.getDate("fechaNacimiento"),
 	                    rs.getDate("fechaRegistro")));
 	        }
+<<<<<<< HEAD
 	       
 	        	return usu;
 	        
+
 		}catch(Exception e) {
 			e.printStackTrace();
 			}
 		return null;
+		
 
-	}
+=======
+		} catch (SQLException e) {
+			Writer.escribirLoggerWarning("La consulta para listar todos los usarios ha fallado " + e.getMessage());
+			//e.printStackTrace();
+		}
+		
+        return usu;
+		
+>>>>>>> branchJulian
+
 	
+	
+
 }

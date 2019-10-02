@@ -1,5 +1,6 @@
 /**
- * @author Julian Bautista
+ * @author Julian Bautista 
+ * @author Sisa Romero
  */
 package model.dao;
 
@@ -11,7 +12,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Pelicula;
-import model.Usuario;
 import utilities.Writer;
 
 public class DaoPeliculaIMPL implements DaoPelicula {
@@ -90,49 +90,85 @@ public class DaoPeliculaIMPL implements DaoPelicula {
         }
 		return null;
 	}
-
+	
+	/**
+	 * Mï¿½todo que actualiza Pelï¿½cula
+	 * 
+	 * @param peli
+	 * 		  objeto pelicula
+	 * 
+	 */
 	@Override
 	public void actualizaPelicula(Pelicula peli) {
-		// TODO Auto-generated method stub
-		
-	}
+	        String sql = "UPDATE PELICULA SET tituloPelicula=?, anyoPelicula=?, categoriaPelicula=? WHERE idPelicula=?";
+	        PreparedStatement pstmt;
+	        
+	
+			try (Statement stmt = con.createStatement()) {
+				pstmt = this.con.prepareStatement(sql);
+				pstmt.setString(1, peli.getTituloPelicula());
+				pstmt.setInt(2, peli.getAnyoPelicula());
+				pstmt.setString(3, peli.getCategoriaPelicula());
+				pstmt.setInt(4, peli.getIdPelicula());
+	            if (pstmt.executeUpdate() != 1) {
+	                throw new SQLException("Error actualizando Pelicula");
+	            }
+	        } catch (SQLException e) {
+	        	
+	            Writer.escribirLoggerWarning("La sentencia para insertar usuario ha fallado " + e.getMessage());
+	        
+	        }
+	    }
+
 	/**
+	 * listar todas las peliculas
 	 * 
 	 * @return arrayList de peliculas
 	 */
 	
 	public ArrayList<Pelicula> listarPelicula(){
 		
-		
+		ArrayList<Pelicula> pelis = new ArrayList<Pelicula>();
 		try {
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM pelicula";
+			String query = "SELECT * FROM PELICULA";
 	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
 	        while (rs.next()) {
-	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
-	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula")));
 	        }
-	        	return peli;
-	        
+	        	return pelis;
 		}catch(Exception e) {
-			e.printStackTrace();
+			Writer.escribirLoggerWarning("La consulta para listar todas las peliculas ha fallado: " + e.getMessage());
+			//e.printStackTrace();
 			}
-		return null;
+		return pelis;
 	}
-
-	public void crearPelicula() {
-		// TODO Auto-generated method stub
-		
+	
+	/**
+	* Insertar peliculas a la Base de Datos desde una lista
+	* 
+	*@param listaPelicula
+    *		 lista de  peliculas 
+	*/
+	@Override
+	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
+			
+		for(Pelicula n: listaPelicula) {
+					 insertaPelicula(n);
+			
+		}				
 	}
-public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
-		
-		
+	/**
+	 * 
+	 * @return arrayList de peliculas
+	 */	
+	public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
+		ArrayList<Pelicula> peli = new ArrayList<>();
 		try {
 			Statement stmt = con.createStatement();
 			String query = "SELECT * FROM pelicula WHERE categoriaPelicula='"+categoria+"'";
 	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
 	        while (rs.next()) {
 	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
 	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula")));
@@ -140,9 +176,61 @@ public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
 	        	return peli;
 	        
 		}catch(Exception e) {
-			e.printStackTrace();
+			Writer.escribirLoggerWarning("La consulta para filtrar por categoria ha fallado" + e.getMessage());
 			}
-		return null;
+		return peli;
+	}
+	/**
+	 * @return Devuelve arraylist de películas ordenadas por valoración
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaPorValoracion(int n){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula ORDER BY valoracionPelicula DESC LIMIT "+ n;
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	        e.printStackTrace();
+	        }
+	    return pelis;
+<<<<<<< HEAD
+<<<<<<< HEAD
+	    
+=======
+>>>>>>> branchJulian
+=======
+>>>>>>> branchJulian
+	}
+	
+	/**
+	 * @return Devuelve arraylist de películas no vistas
+	 */
+	@Override
+	public ArrayList<Pelicula> listarPeliculaNoVista(){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula WHERE visualizacionPelicula = 0";
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	        e.printStackTrace();
+	        }
+	    return pelis;
 	}
 	
 	

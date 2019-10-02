@@ -22,12 +22,17 @@ public class ConexionDB {
 		       DriverManager.getConnection("jdbc:mysql://10.90.36.103:3306/movieflix?" +
 		                                   "user=root&password=123456789&serverTimezone=UTC");
 
-		    // Do something with the Connection
+<<<<<<< HEAD
+<<<<<<< HEAD
+		    
+=======
+>>>>>>> branchJulian
+=======
+>>>>>>> branchJulian
 		} catch (SQLException ex) {
-		    // handle any errors
-		    System.out.println("SQLException: " + ex.getMessage());
-		    System.out.println("SQLState: " + ex.getSQLState());
-		    System.out.println("VendorError: " + ex.getErrorCode());
+		   Writer.escribirLoggerWarning("SQLException: " + ex.getMessage());
+		   Writer.escribirLoggerWarning("SQLState: " + ex.getSQLState());
+		   Writer.escribirLoggerWarning("VendorError: " + ex.getErrorCode());
 		}
 	}
 	public Connection getConn() {
@@ -37,7 +42,7 @@ public class ConexionDB {
         try {
             this.conn.close();
         } catch (SQLException se) {
-            System.out.println("Exception closing Connection: " + se);
+        	Writer.escribirLoggerFine("Exception closing Connection: " + se);
         }
     }
 	
