@@ -1,8 +1,12 @@
 /**
+ * 
+ * Clase DaoUsuario el cual lleva implementado la interfaz DaoUsuario
+ * 
  * @author Julian Bautista
  * @author Daniel
  * @author Sisa Romero
  */
+
 
 package model.dao;
 
@@ -22,13 +26,21 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 
 	private Connection con = null;
 
-    // package level access
+    // Metodo para abrir la conexion a la base de datos
     public DaoUsuarioIMPL() {
 
         con = new ConexionDB().getConn();
     }
     
 	@Override
+	/**
+	* Metodo para insertar Usuario
+	* 
+	* @ejb.create-method
+	* 
+	* @param user
+	* 
+	*/
 	public void insertaUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
@@ -51,7 +63,11 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	}
 
 	/**
-	@ejb.create-method este metodo borra el usuario dependiendo de su ID en la base de datos
+	* Metodo el cual borra  el usuario dependiendo de su ID en la base de datos
+	*
+	*@ejb.create-method 
+	*
+	*@param id
 	*/
 	@Override
 	public void eliminaUsuario(int id) {
@@ -73,7 +89,17 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 
 	}
 	/**
-	@ejb.create-method este metodo retorna un usuario para ser borrado o modificado dependiendo de su ID
+	* 
+	* Metodo que retorna un usuario para ser borrado o modificado dependiendo de su ID
+	* 
+	*@ejb.create-method 
+	*
+	*@param id
+	*
+	*@return  <ul>
+	*         <li>Usuario</li>
+	*         </ul>
+	*
 	*/
 	@Override
 	public Usuario buscarID(int id) {
@@ -94,11 +120,18 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 		return null;
     }
 	/**
-	@ejb.create-method Este metodo modifica en base de datos el usuario pasado por parmetro
+	* Metodo que modifica en base de datos el usuario pasado por parametro
+	*
+	*@ejb.create-method
+	* 
+	*@param user
+	*
 	*/
 	@Override
 	public void actualizaUsuario(Usuario user) {
-        
+		/**
+		 * Sentencia sql para actualizar Usuarios en la base de datos
+		 */      
         String sql = "UPDATE USUARIO SET nombreUsuario=?, apellidoUsuario=?, fechaNacimiento=?, fechaRegistro=? WHERE idUsuario=?";
         PreparedStatement pstmt;
                 
@@ -118,11 +151,21 @@ public class DaoUsuarioIMPL implements DaoUsuario {
         
         
      }
-	
-	
+	/**
+	*  Metodo que lista Usuarios el cual devuelve un ArrayList de Usuarios
+	*  
+	*@ejb.create-method
+	*
+	*@return 
+	*         <ul>
+	*         <li>Usu</li>
+	*         </ul>
+	*
+	*/
 	public  ArrayList<Usuario>  listarUsuario() {
 		
 		Statement stmt;
+		
 		ArrayList<Usuario> usu = new ArrayList<>();
 		try {
 			stmt = con.createStatement();

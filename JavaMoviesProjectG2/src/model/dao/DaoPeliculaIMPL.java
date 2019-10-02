@@ -29,6 +29,12 @@ public class DaoPeliculaIMPL implements DaoPelicula {
     }
     
 	@Override
+	/**
+	 * Metodo que inserta Pelïcula 
+	 * 
+	 * @param peli
+	 *
+	 */
 	public void insertaPelicula(Pelicula peli) {
 		String sql = "INSERT INTO Pelicula (tituloPelicula, anyoPelicula, categoriaPelicula) VALUES (?, ?, ?)";
 		PreparedStatement pstmt;
@@ -51,6 +57,12 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 
 	@Override
+	/**
+	 * Metodo que elimina Pelïcula por ID
+	 * 
+	 * @param peli
+	 *
+	 */
 	public void eliminaPelicula(int id) {
 		// TODO Auto-generated method stub
 		
@@ -74,6 +86,17 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 
 	@Override
+	/**
+	 * Metodo que busca Pelïcula por ID
+	 * 
+	 * @param peli
+	 * 
+	 *@return 
+	 *         <ul>
+	 *         <li>Pelicula o null en caso de fallo en la query</li>
+	 *         </ul>
+	 *
+	 */
 	public Pelicula buscarID(int id) {
 		// TODO Auto-generated method stub
 		try (Statement stmt = con.createStatement()) {
@@ -92,7 +115,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	/**
-	 * Mï¿½todo que actualiza Pelï¿½cula
+	 * Metodo que actualiza Pelïcula
 	 * 
 	 * @param peli
 	 * 		  objeto pelicula
@@ -121,10 +144,16 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	    }
 
 	/**
-	 * listar todas las peliculas
-	 * 
-	 * @return arrayList de peliculas
-	 */
+	*  Metodo que lista todas las Peliculas y devuelve un ArrayList de Peliculas 
+	*  
+	*@ejb.create-method
+	*
+	*@return 
+	*         <ul>
+	*         <li>pelis</li>
+	*         </ul>
+	*
+	*/
 	
 	public ArrayList<Pelicula> listarPelicula(){
 		
@@ -146,7 +175,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	/**
-	* Insertar peliculas a la Base de Datos desde una lista
+	* Metodo que insertar peliculas en la Base de Datos desde una lista
 	* 
 	*@param listaPelicula
     *		 lista de  peliculas 
@@ -160,9 +189,16 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		}				
 	}
 	/**
-	 * 
-	 * @return arrayList de peliculas
-	 */	
+	*  Metodo que lista Peliculas por categoria y devuelve un ArrayList de Peliculas 
+	*  
+	*@ejb.create-method
+	*
+	*@return 
+	*         <ul>
+	*         <li>peli</li>
+	*         </ul>
+	*
+	*/
 	public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
 		ArrayList<Pelicula> peli = new ArrayList<>();
 		try {
@@ -180,9 +216,18 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 			}
 		return peli;
 	}
+
 	/**
-	 * @return Devuelve arraylist de películas ordenadas por valoración
-	 */
+	*  Metodo que lista Peliculas por valoracion devuelve un ArrayList de Peliculas no vistas
+	*  
+	*@ejb.create-method
+	*
+	*@return 
+	*         <ul>
+	*         <li>pelis</li>
+	*         </ul>
+	*
+	*/
 	@Override
 	public ArrayList<Pelicula> listarPeliculaPorValoracion(int n){
 	    
@@ -203,9 +248,18 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	    return pelis;
 	}
 	
+
 	/**
-	 * @return Devuelve arraylist de películas no vistas
-	 */
+	*  Metodo que lista Peliculas el cual devuelve un ArrayList de Peliculas no vistas
+	*  
+	*@ejb.create-method
+	*
+	*@return 
+	*         <ul>
+	*         <li>pelis</li>
+	*         </ul>
+	*
+	*/
 	@Override
 	public ArrayList<Pelicula> listarPeliculaNoVista(){
 	    

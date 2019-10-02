@@ -30,14 +30,14 @@ public interface DaoPelicula {
 	public void eliminaPelicula(int id);
 	/**
 	* Metodo para buscar id
-	* 
+	* Devuelve un objeto tipo pelicula
 	* @param id
 	* 
 	*/
 	public Pelicula buscarID(int id);
 	/**
 	* Metodo para actualizar pelicula
-	* Devuelve un objeto tipo pelicula
+	*
 	* @param peli
 	* 
 	*/
