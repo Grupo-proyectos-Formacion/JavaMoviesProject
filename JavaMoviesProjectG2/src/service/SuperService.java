@@ -1,17 +1,24 @@
 /**
  * @author Daniel
  * @author Sisa Romero
+ * @author Julian Bautista
  */
 package service;
 
+import model.Pelicula;
 import model.Usuario;
 import model.dao.DaoPeliculaIMPL;
 import model.dao.DaoUsuarioIMPL;
+import model.dao.DaoPeliculaIMPL;
 
 public class SuperService {
 	
 	static DaoUsuarioIMPL daoUsu = new DaoUsuarioIMPL();
 	static DaoPeliculaIMPL daoPeli = new DaoPeliculaIMPL();
+	
+	public static void insertarUsuario(Usuario usu) {
+		daoUsu.insertaUsuario(usu);
+	}
 	
 	public static void actualizarUsuario(Usuario usu) {
 		daoUsu.actualizaUsuario(usu);
@@ -32,4 +39,28 @@ public class SuperService {
 	public static void listarPelicula() {
 		daoPeli.listarPelicula();				
 	}
+	
+	public static void listarPeliculaCategoria(String categoria) {
+		daoPeli.listarPeliculaCategoria(categoria);
+	}
+	
+	public static void listarPeliculaNoVistas() {
+		daoPeli.listarPeliculaNoVista();
+	}
+
+	public static void listarUsuario(Usuario usu) {
+		daoUsu.listarUsuario();
+	}
+	
+	public static void insertarPelicula(Pelicula peli) {
+		daoPeli.insertaPelicula(peli);
+	}
+	
+	public static void actualizarPelicula(Pelicula peli) {
+        daoPeli.actualizaPelicula(peli);
+    }
+	
+	public static void listarPeliculaPorValoracion(int numero) {
+        daoPeli.listarPeliculaPorValoracion(numero);
+    }
 }

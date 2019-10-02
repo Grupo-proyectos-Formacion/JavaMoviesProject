@@ -45,7 +45,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
                 throw new SQLException("Error adding Usuario");
             }
         } catch (SQLException e) {
-        	Writer.escribirLoggerWarning("La query para insertar usuario ha fallado " + e.getMessage());
+        	Writer.escribirLoggerWarning("La consulta para insertar usuario ha fallado " + e.getMessage());
             //MODIFICAR PARA USAR EL LOGIN
         }
 	}
@@ -117,8 +117,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
        }
         
         
-        
-    }
+     }
 	
 	
 	public  ArrayList<Usuario>  listarUsuario() {
@@ -147,6 +146,4 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 
 	}
 	
-	
-
 }
