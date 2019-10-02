@@ -12,6 +12,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Pelicula;
+import model.Usuario;
 import utilities.Writer;
 
 public class DaoPeliculaIMPL implements DaoPelicula {
@@ -217,6 +218,50 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	        while (rs.next()) {
 	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
 	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	        e.printStackTrace();
+	        }
+	    return pelis;
+	}
+	
+	public  Pelicula getPelicula(int id) {
+		
+		Statement stmt;
+		Pelicula peli = new Pelicula();
+		try {
+			stmt = con.createStatement();
+			String query = "SELECT * FROM PELICULA WHERE IDPELICULA = "+ id +";" ;
+			ResultSet rs = stmt.executeQuery(query);
+			
+	        if(!rs.next()) {
+	        	throw new SQLException("no ha devuelto valores");
+	        }
+	        
+	        peli = new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula"));
+	        
+		} catch (SQLException e) {
+			Writer.escribirLoggerWarning("La consulta para regresar una película especifica ha fallado: " + e.getMessage());
+	
+		}
+		
+        return peli;
+	}
+	
+	@Override
+	public ArrayList<Pelicula> listarPeliculaMasVista(int n){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula ORDER BY visualizacionPelicula DESC LIMIT "+ n;
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula")));
 	        }
 	            return pelis;
 	        

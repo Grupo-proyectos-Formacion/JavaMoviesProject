@@ -126,7 +126,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 		ArrayList<Usuario> usu = new ArrayList<>();
 		try {
 			stmt = con.createStatement();
-			String query = "SELECT * FROM ERROR";
+			String query = "SELECT * FROM USUARIO";
 			ResultSet rs = stmt.executeQuery(query);
 	        if(!rs.next()) {
 	        	throw new SQLException("no ha devuelto valores");
@@ -138,6 +138,33 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	        }
 		} catch (SQLException e) {
 			Writer.escribirLoggerWarning("La consulta para listar todos los usarios ha fallado " + e.getMessage());
+			//e.printStackTrace();
+		}
+		
+        return usu;
+		
+
+	}
+	
+	public  Usuario getUsuario(int id) {
+		
+		Statement stmt;
+		Usuario usu = new Usuario();
+		try {
+			stmt = con.createStatement();
+			String query = "SELECT * FROM USUARIO WHERE IDUSUARIO = "+ id +";" ;
+			ResultSet rs = stmt.executeQuery(query);
+			
+	        if(!rs.next()) {
+	        	throw new SQLException("no ha devuelto valores");
+	        }
+	        
+	        usu = new Usuario(rs.getInt("idUsuario"), rs.getString("nombreUsuario"),
+	                    rs.getString("apellidoUsuario"), rs.getDate("fechaNacimiento"),
+	                    rs.getDate("fechaRegistro"));
+	        
+		} catch (SQLException e) {
+			Writer.escribirLoggerWarning("La consulta para regresar un usuario especifico ha fallado: " + e.getMessage());
 			//e.printStackTrace();
 		}
 		
