@@ -43,9 +43,8 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             if (pstmt.executeUpdate() != 1) {
                 throw new SQLException("Error adding Pelicula");
             }
-        } catch (SQLException se) {
-            se.printStackTrace();
-            //MODIFICAR PARA USAR EL LOGIN
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para insertar película ha fallado " + e.getMessage());
         }
 		
 	}
@@ -65,8 +64,8 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             if (stmt.executeUpdate(query) != 1) {
             	System.out.println("La pelicula con id"+ id+ "ha sido borrada");
             }
-        } catch (SQLException se) {
-            //se.printStackTrace();
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para eliminar película ha fallado " + e.getMessage());
 
         }
 		System.out.println(listarPelicula());
@@ -84,8 +83,8 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             }
             return (new Pelicula(rs.getInt("idPelicula"), rs.getString("nombrePelicula"),
                     rs.getInt("anio"), rs.getString("categoriaPelicula")));
-        } catch (SQLException se) {
-            
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para buscar película ha fallado " + e.getMessage());
  
         }
 		return null;
@@ -115,7 +114,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            }
 	        } catch (SQLException e) {
 	        	
-	            Writer.escribirLoggerWarning("La sentencia para insertar usuario ha fallado " + e.getMessage());
+	            Writer.escribirLoggerWarning("La sentencia para actualizar película ha fallado " + e.getMessage());
 	        
 	        }
 	    }
@@ -176,7 +175,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	        	return peli;
 	        
 		}catch(Exception e) {
-			Writer.escribirLoggerWarning("La consulta para filtrar por categoria ha fallado" + e.getMessage());
+			Writer.escribirLoggerWarning("La consulta para filtrar películas por categoria ha fallado" + e.getMessage());
 			}
 		return peli;
 	}
@@ -198,7 +197,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            return pelis;
 	        
 	    }catch(Exception e) {
-	        e.printStackTrace();
+	    	Writer.escribirLoggerWarning("La consulta para listar películas por valoración ha fallado " + e.getMessage());
 	        }
 	    return pelis;
 	}
@@ -221,7 +220,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            return pelis;
 	        
 	    }catch(Exception e) {
-	        e.printStackTrace();
+	    	Writer.escribirLoggerWarning("La consulta para listar películas no vistas ha fallado " + e.getMessage());
 	        }
 	    return pelis;
 	}

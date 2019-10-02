@@ -46,7 +46,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             }
         } catch (SQLException e) {
         	Writer.escribirLoggerWarning("La consulta para insertar usuario ha fallado " + e.getMessage());
-            //MODIFICAR PARA USAR EL LOGIN
+            
         }
 	}
 
@@ -58,16 +58,16 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 		
 		Usuario usu = buscarID(id);
         if (usu == null) {
-        	Writer.escribirPantalla("El usuario no existe");
-            //LOGGEAR ERROR
+        	Writer.escribirLoggerWarning("El usuario no existe");
+        
         }
         try (Statement stmt = con.createStatement()) {
             String query = "DELETE FROM usuario WHERE idUsuario=" + id;
             if (stmt.executeUpdate(query) != 1) {
 
             }
-        } catch (SQLException se) {
-            //se.printStackTrace();
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para eliminar usuario ha fallado " + e.getMessage());
 
         }
 
@@ -86,9 +86,8 @@ public class DaoUsuarioIMPL implements DaoUsuario {
             return (new Usuario(rs.getInt("ID"), rs.getString("NOMBRE"),
                     rs.getString("APELLIDO"), rs.getDate("FECHA DE NACIMIENTO"),
                     rs.getDate("FECHA DE REGISTRO")));
-        } catch (SQLException se) {
-            //se.printStackTrace();
-        	//LOGEAR SQL EXCEPTION
+        } catch (SQLException e) {
+        	Writer.escribirLoggerWarning("La consulta para buscar usuario ha fallado " + e.getMessage());
  
         }
 		return null;
