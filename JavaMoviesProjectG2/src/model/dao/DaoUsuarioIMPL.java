@@ -29,7 +29,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
     }
     
 	@Override
-	public void insertaUsuario(Usuario user) {
+	public void insertarUsuario(Usuario user) {
 		String sql = "INSERT INTO Usuario (nombreUsuario, apellidoUsuario, fechaNacimiento, fechaRegistro) VALUES (?, ?, ?, ?)";
 		PreparedStatement pstmt;
 		
@@ -54,7 +54,7 @@ public class DaoUsuarioIMPL implements DaoUsuario {
 	@ejb.create-method este metodo borra el usuario dependiendo de su ID en la base de datos
 	*/
 	@Override
-	public void eliminaUsuario(int id) {
+	public void eliminarUsuario(int id) {
 		
 		Usuario usu = buscarID(id);
         if (usu == null) {

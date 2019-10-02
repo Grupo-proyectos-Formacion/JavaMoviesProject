@@ -8,7 +8,8 @@ public enum Categoria {
 		THRILLER("thriller"),
 		AVENTURA("aventura"),
 		POLICIACA("policiaca"),
-		ANIMACION("animacion");
+		ANIMACION("animacion"),
+		TODAS("%");
 	
 	
 	

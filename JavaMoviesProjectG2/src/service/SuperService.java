@@ -19,19 +19,19 @@ public class SuperService {
 	static DaoPeliculaIMPL daoPeli = new DaoPeliculaIMPL();
 	
 	public static void insertarUsuario(Usuario usu) {
-		daoUsu.insertaUsuario(usu);
+		daoUsu.insertarUsuario(usu);
 	}
 	
 	public static void actualizarUsuario(Usuario usu) {
 		daoUsu.actualizaUsuario(usu);
 	}
 	
-	public static void borrarUsuario(Usuario usu) {
-		daoUsu.eliminaUsuario(usu.getIdUsuario());
+	public static void eliminarUsuario(int usuario) {
+		daoUsu.eliminarUsuario(usuario);
 	}
 	
-	public static void eliminarPelicula(int Pelicula) {
-        daoPeli.eliminaPelicula(Pelicula);
+	public static void eliminarPelicula(int pelicula) {
+        daoPeli.eliminaPelicula(pelicula);
     }
 
 	public static ArrayList<Usuario> listarUsuario(){
@@ -62,7 +62,7 @@ public class SuperService {
         daoPeli.actualizaPelicula(peli);
     }
 	
-	public static void listarPeliculaPorValoracion(int numero) {
-        daoPeli.listarPeliculaPorValoracion(numero);
+	public static ArrayList<Pelicula> listarPeliculaPorValoracion(int numero) {
+        return daoPeli.listarPeliculaPorValoracion(numero);
     }
 }
