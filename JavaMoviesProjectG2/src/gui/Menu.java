@@ -13,8 +13,8 @@ import utilities.CreadorObjeto;
 public class Menu {
 	
 	/**
-	 * Método para mostrar menú inicial
-	 * @return Devuelve un int que representa la opción elegida por el usuario (usuario o películas)
+	 * Mï¿½todo para mostrar menï¿½ inicial
+	 * @return Devuelve un int que representa la opciï¿½n elegida por el usuario (usuario o pelï¿½culas)
 	 */
 	public static int menuInicial() {
 		
@@ -34,7 +34,7 @@ public class Menu {
 
 	
 	/**
-	 * Método para mostrar opciones sobre usuario
+	 * Mï¿½todo para mostrar opciones sobre usuario
 	 * @return Devuelve un int que representa la opcion elegida sobre "usuarios"
 	 */
 	public static int menuUsuario() {
@@ -57,7 +57,7 @@ public class Menu {
 	}
 	
 	/**
-	 * Método para llamar al metodo crear usuario
+	 * Mï¿½todo para llamar al metodo crear usuario
 	 * @return Devuelve un objeto usuario
 	 */
 	public static Usuario menuCrearUsuario() {
@@ -73,8 +73,8 @@ public class Menu {
 	
 
 	/**
-	 * Método para mostrar opciones sobre película
-	 * @return Devuelve un int que representa la opcion elegida sobre "películas"
+	 * Mï¿½todo para mostrar opciones sobre pelï¿½cula
+	 * @return Devuelve un int que representa la opcion elegida sobre "pelï¿½culas"
 	 */
 	public static int menuPelicula() {
 		
@@ -86,14 +86,14 @@ public class Menu {
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
 				+ "           ** 0. Salir                              **\n"
-				+ "           ** 1. Insertar película                  **\n"
-				+ "           ** 2. Modificar película                 **\n"
-				+ "           ** 3. Eliminar película                  **\n"
-				+ "           ** 4. Mostrar todas las películas        **\n"
-				+ "           ** 5. Mostrar películas por categoría    **\n"
-				+ "           ** 6. Ordenar por más vistas             **\n"
-				+ "           ** 7. Ordenar por más valoradas          **\n"
-				+ "           ** 8. Películas no vistas                **\n"				
+				+ "           ** 1. Insertar pelï¿½cula                  **\n"
+				+ "           ** 2. Modificar pelï¿½cula                 **\n"
+				+ "           ** 3. Eliminar pelï¿½cula                  **\n"
+				+ "           ** 4. Mostrar todas las pelï¿½culas        **\n"
+				+ "           ** 5. Mostrar pelï¿½culas por categorï¿½a    **\n"
+				+ "           ** 6. Ordenar por mï¿½s vistas             **\n"
+				+ "           ** 7. Ordenar por mï¿½s valoradas          **\n"
+				+ "           ** 8. Pelï¿½culas no vistas                **\n"				
 				+ "           *******************************************");
 		
 		return LecturaDato.LeerInt();
@@ -101,8 +101,8 @@ public class Menu {
 	
 	
 	/**
-	 * Método para llamar al método crear película
-	 * @return Devuelve un objeto película
+	 * Mï¿½todo para llamar al mï¿½todo crear pelï¿½cula
+	 * @return Devuelve un objeto pelï¿½cula
 	 */
 	public static Pelicula menuCrearPelicula() {
 		
@@ -116,7 +116,7 @@ public class Menu {
 	
 	
 	/**
-	 * Método indicador de tarea realizada
+	 * Mï¿½todo indicador de tarea realizada
 	 */
 	public static void menuTareaCompletada() {
 		
@@ -126,7 +126,7 @@ public class Menu {
 				+ "\n");
 
 		Writer.escribirPantalla("*******************************************\n"
-				+ "           **           ¡TAREA COMPLETADA!          **\n"
+				+ "           **           ï¿½TAREA COMPLETADA!          **\n"
 				+ "           *******************************************");
 		
 	}
