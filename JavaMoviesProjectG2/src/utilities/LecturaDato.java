@@ -12,7 +12,10 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class LecturaDato {
-	
+		
+	  /**
+	   * @return Devuelve un int introducido por el usuario
+	   */
 	  @SuppressWarnings("resource")
 	    public static int LeerInt(){
 	        boolean exito;
@@ -31,30 +34,49 @@ public class LecturaDato {
 	        
 	    }
 	    
+	  /**
+	   * 
+	   * @param Recibe un String para mostrarlo al usuario
+	   * @return Devuelve una llamada al método LeerInt()
+	   */
 	    public static int LeerInt(String msg){
 	        System.out.println(msg);
 	        return LeerInt();
 	    }    
 	    
+	    
+	    /**
+	     * 
+	     * @return Devuelve el String introducido por el usuario
+	     */
 	    @SuppressWarnings("resource")
 	    public static String LeerTexto(){
 	        Scanner teclado=new Scanner(System.in);
 	        return teclado.nextLine();
 	    }
 	    
+	    /**
+	     * 
+	     * @param Recibe un String para mostrarlo al usuario
+	     * @return Devuelve una llamada al método LeerTexto()
+	     */
 	    public static String LeerhTexto(String msg){
 	        System.out.println(msg);
 	        return LeerTexto();
 	    }
 	    
-	    public static Date LeerFecha() {
-	        Date date=new Date(); ///CHAPUZA
+	    /**
+	     * 
+	     * @return Devuelve una fecha introducida por el usuario
+	     */
+	    public static Date LeerFecha(String msg) {
+	        Date date=new Date(); 
 	        String dateString ;
 	        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
 	        Boolean exito;
 	        do {
 	            try {
-	                dateString = LecturaDato.LeerhTexto("\n Dame una fecha con el formato dd-mm-aaaa");
+	                dateString = LecturaDato.LeerhTexto(msg);
 	                date = formatter.parse(dateString);
 	                exito= true;
 	            } catch (ParseException ex) {
