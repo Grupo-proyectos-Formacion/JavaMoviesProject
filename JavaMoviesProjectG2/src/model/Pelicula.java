@@ -12,42 +12,43 @@ public class Pelicula {
 	private int idPelicula;	
 
 	/**
-	 * Título de película
+	 * Tï¿½tulo de pelï¿½cula
 	 */
 	private String tituloPelicula;
 	
 	/**
-	 * Valoracion de película
+	 * Valoracion de pelï¿½cula
 	 */
 	private int valoracionPelicula;
 	
 	/**
-	 * Año de película
+	 * Aï¿½o de pelï¿½cula
 	 */
 	private int anyoPelicula;
 	
 	/**
-	 * Categoría de película
+	 * Categorï¿½a de pelï¿½cula
 	 */
 	private String categoriaPelicula;
+
 	/**
-	 * visitas
-	 */
-	private int vecesVistas;
-	
-	/**
-	 * Valoracion película
+	 * Valoracion pelï¿½cula
 	 */
 	private int valoracionPelicula;
 	
 	/**
-	 * Constructor con 3 parámetros
+	 * Visualizaciones de la pelï¿½cula
+	 */
+	private int visualizacionPelicula;
+	
+	/**
+	 * Constructor con 3 parï¿½metros
 	 * @param titulo
-	 * Título película
+	 * Tï¿½tulo pelï¿½cula
 	 * @param anyo
-	 * Año película
+	 * Aï¿½o pelï¿½cula
 	 * @param categoria
-	 * Categoría película
+	 * Categorï¿½a pelï¿½cula
 	 */
 	public Pelicula(String tituloPelicula, int anyoPelicula, String categoriaPelicula) {
 		
@@ -57,17 +58,17 @@ public class Pelicula {
 	}
 	
 	/**
-	 * Constructor con 5 parámetros
+	 * Constructor con 5 parï¿½metros
 	 * @param idPelicula
 	 * Id de la pelicula
 	 * @param titulo
-	 * Título película
+	 * Tï¿½tulo pelï¿½cula
 	 * @param anyo
-	 * Año película
+	 * Aï¿½o pelï¿½cula
 	 * @param categoria
-	 * Categoría película
+	 * Categorï¿½a pelï¿½cula
 	 * @param valoracion
-	 * Valoracion de la película
+	 * Valoracion de la pelï¿½cula
 	 */
 	public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula) {
 		this.idPelicula=idPelicula;
@@ -78,17 +79,17 @@ public class Pelicula {
 	}
 	
 	/**
-     * Constructor con 5 parámetros
+     * Constructor con 5 parï¿½metros
      * @param idPelicula
      * Id de la pelicula
      * @param titulo
-     * Título película
+     * Tï¿½tulo pelï¿½cula
      * @param anyo
-     * Año película
+     * Aï¿½o pelï¿½cula
      * @param categoria
-     * Categoría película
+     * Categorï¿½a pelï¿½cula
      * @param valoracion
-     * Valoracion de la película
+     * Valoracion de la pelï¿½cula
      */
     public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula) {
         this.idPelicula=idPelicula;
@@ -96,6 +97,30 @@ public class Pelicula {
         this.anyoPelicula = anyoPelicula;
         this.categoriaPelicula = categoriaPelicula;
         this.valoracionPelicula = valoracionPelicula;
+    }
+    
+    /**
+     * Constructor con 5 parï¿½metros
+     * @param idPelicula
+     * Id de la pelicula
+     * @param titulo
+     * Tï¿½tulo pelï¿½cula
+     * @param anyo
+     * Aï¿½o pelï¿½cula
+     * @param categoria
+     * Categorï¿½a pelï¿½cula
+     * @param valoracion
+     * Valoracion de la pelï¿½cula
+     * @param visualizacion
+     * Visualizaciones de la pelicula
+     */
+    public Pelicula(int idPelicula, String tituloPelicula, int anyoPelicula, String categoriaPelicula, int valoracionPelicula, int visualizacionPelicula) {
+        this.idPelicula=idPelicula;
+        this.tituloPelicula = tituloPelicula;
+        this.anyoPelicula = anyoPelicula;
+        this.categoriaPelicula = categoriaPelicula;
+        this.valoracionPelicula = valoracionPelicula;
+        this.visualizacionPelicula = visualizacionPelicula;
     }
 
 	public int getIdPelicula() {
@@ -130,14 +155,6 @@ public class Pelicula {
 		this.categoriaPelicula = categoriaPelicula;
 	}
 
-	public int getIdPelicula() {
-		return idPelicula;
-	}
-
-	public void setIdPelicula(int idPelicula) {
-		this.idPelicula = idPelicula;
-	}
-
 	public int getValoracionPelicula() {
 		return valoracionPelicula;
 	}
@@ -146,11 +163,22 @@ public class Pelicula {
 		this.valoracionPelicula = valoracionPelicula;
 	}
 
+	public int getVisualizacionPelicula() {
+		return visualizacionPelicula;
+	}
+
+	public void setVisualizacionPelicula(int visualizacionPelicula) {
+		this.visualizacionPelicula = visualizacionPelicula;
+	}
+
 	@Override
 	public String toString() {
-		return "Pelicula [tituloPelicula=" + tituloPelicula + ", anyoPelicula=" + anyoPelicula + ", categoriaPelicula="
-				+ categoriaPelicula + "]";
+		return "Id pelï¿½cula=" + idPelicula + ", Tï¿½tulo pelicula=" + tituloPelicula + ", Aï¿½o  pelï¿½cula="
+				+ anyoPelicula + ", Categorï¿½a pelï¿½cula=" + categoriaPelicula + ", Valoraciï¿½n pelï¿½cula="
+				+ valoracionPelicula + ", Visualizaciï¿½n pelï¿½cula=" + visualizacionPelicula + "]\n";
 	}
+
+	
 
 	
 

@@ -5,6 +5,8 @@
  */
 package service;
 
+import java.util.ArrayList;
+
 import model.Pelicula;
 import model.Usuario;
 import model.dao.DaoPeliculaIMPL;
@@ -32,24 +34,24 @@ public class SuperService {
         daoPeli.eliminaPelicula(Pelicula);
     }
 
-	public static void listarUsuario(){
-		daoUsu.listarUsuario();
+	public static ArrayList<Usuario> listarUsuario(){
+		return daoUsu.listarUsuario();
 	}
 			
-	public static void listarPelicula() {
-		daoPeli.listarPelicula();				
+	public static ArrayList<Pelicula> listarPelicula() {
+		return daoPeli.listarPelicula();				
 	}
 	
-	public static void listarPeliculaCategoria(String categoria) {
-		daoPeli.listarPeliculaCategoria(categoria);
+	public static ArrayList<Pelicula> listarPeliculaCategoria(String categoria) {
+		return daoPeli.listarPeliculaCategoria(categoria);
 	}
 	
-	public static void listarPeliculaNoVistas() {
-		daoPeli.listarPeliculaNoVista();
+	public static ArrayList<Pelicula> listarPeliculaNoVistas() {
+		return daoPeli.listarPeliculaNoVista();
 	}
 
-	public static void listarUsuario(Usuario usu) {
-		daoUsu.listarUsuario();
+	public static ArrayList<Usuario> listarUsuario(Usuario usu) {
+		return daoUsu.listarUsuario();
 	}
 	
 	public static void insertarPelicula(Pelicula peli) {

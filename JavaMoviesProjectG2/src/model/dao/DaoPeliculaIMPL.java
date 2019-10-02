@@ -109,9 +109,44 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 		
 		try {
 			Statement stmt = con.createStatement();
-			String query = "SELECT * FROM pelicula";
+			String query = "SELECT * FROM PELICULA";
 	        ResultSet rs = stmt.executeQuery(query);
-	        ArrayList<Pelicula> peli = new ArrayList<>();
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula")));
+	        }
+	        	return pelis;
+		}catch(Exception e) {
+			Writer.escribirLoggerWarning("La consulta para listar todas las peliculas ha fallado: " + e.getMessage());
+			//e.printStackTrace();
+			}
+		return pelis;
+	}
+	
+	/**
+	* Insertar peliculas a la Base de Datos desde una lista
+	* 
+	*@param listaPelicula
+    *		 lista de  peliculas 
+	*/
+	@Override
+	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula) {
+			
+		for(Pelicula n: listaPelicula) {
+					 insertaPelicula(n);
+			
+		}				
+	}
+	/**
+	 * 
+	 * @return arrayList de peliculas
+	 */	
+	public ArrayList<Pelicula> listarPeliculaCategoria(String categoria){
+		ArrayList<Pelicula> peli = new ArrayList<>();
+		try {
+			Statement stmt = con.createStatement();
+			String query = "SELECT * FROM pelicula WHERE categoriaPelicula='"+categoria+"'";
+	        ResultSet rs = stmt.executeQuery(query);
 	        while (rs.next()) {
 	            peli.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
 	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula")));
@@ -125,7 +160,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	/**
-	 * @return Devuelve arraylist de películas ordenadas por valoración
+	 * @return Devuelve arraylist de pelï¿½culas ordenadas por valoraciï¿½n
 	 */
 	@Override
 	public ArrayList<Pelicula> listarPeliculaValoracion(int n){
@@ -148,7 +183,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	}
 	
 	/**
-	 * @return Devuelve arraylist de películas no vistas
+	 * @return Devuelve arraylist de pelï¿½culas no vistas
 	 */
 	@Override
 	public ArrayList<Pelicula> listarPeliculaNoVista(){

@@ -25,8 +25,9 @@ public class Menu {
 
 		Writer.escribirPantalla("*******************************************\n"
 				+ "           ** ELIGE UNA DE LAS SIGUIENTES OPCIONES: **\n"
-				+ "           ** 1. Usuarios                           **\n"
-				+ "           ** 2. Peliculas                          **\n"
+				+ "           ** 1. Peliculas                          **\n"
+				+ "           ** 2. Usuarios                          **\n"
+				+ "           ** otro. Salir                           **\n" 
 				+ "           *******************************************");
 		
 		return LecturaDato.LeerInt();

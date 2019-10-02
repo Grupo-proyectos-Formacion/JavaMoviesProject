@@ -15,18 +15,8 @@ import utilities.LecturaDato;
 
 public class Main {
 
-	public static void main(String[] args) {
-		/*ConexionDB conn = new ConexionDB();
-		Usuario us = new Usuario("julian","Bautista Velez", LecturaDato.LeerFecha() ,LecturaDato.LeerFecha());
-		DaoUsuarioIMPL daoU = new DaoUsuarioIMPL();
-		
-		daoU.insertaUsuario(us);
-		daoU.eliminaUsuario(3);*/
-		
-		
-		DaoPelicula a = new DaoPeliculaIMPL();
-		System.out.println(a.listarPeliculaNoVista());
-		
+	public static void main(String[] args) throws Exception {
+			Control.controlStart();
 	}
 
 }
