@@ -11,58 +11,134 @@ import model.Pelicula;
 import model.Usuario;
 import model.dao.DaoPeliculaIMPL;
 import model.dao.DaoUsuarioIMPL;
-import model.dao.DaoPeliculaIMPL;
 
+/**
+ * Clase Superservice
+ * 
+ * Contiene metodos relacionados con Usuario y Peliculas que llama al DaoUsuario y a DaoPelicula
+ * 
+ *
+ */
 public class SuperService {
 	
+	/**
+	*
+	* Creacion de daoUsu y daoPeli
+	*/
 	static DaoUsuarioIMPL daoUsu = new DaoUsuarioIMPL();
 	static DaoPeliculaIMPL daoPeli = new DaoPeliculaIMPL();
+
+	// -------------------------------
+	// Metodos relacionado con Usuario
+	// -------------------------------
 	
+	/**
+	* Metodo para insertar un usuario
+	* 
+	* @param usu
+	*/
 	public static void insertarUsuario(Usuario usu) {
 		daoUsu.insertaUsuario(usu);
 	}
-	
+	/**
+	* Metodo para actualizar un usuario
+	* 
+	*  @param usu
+	*/
 	public static void actualizarUsuario(Usuario usu) {
 		daoUsu.actualizaUsuario(usu);
 	}
-	
-	public static void borrarUsuario(Usuario usu) {
-		daoUsu.eliminaUsuario(usu.getIdUsuario());
+	/**
+	* Metodo para eliminar un usuario
+	* 
+	*  @param usu
+	*/
+	public static void eliminarUsuario(int usuario) {
+		daoUsu.eliminaUsuario(usuario);
 	}
-	
-	public static void eliminarPelicula(int Pelicula) {
-        daoPeli.eliminaPelicula(Pelicula);
-    }
-
-	public static ArrayList<Usuario> listarUsuario(){
+	/**
+	* Metodo para listar un usuario
+	* @return
+	*         <ul>
+	*         <li>listarUsuario</li>
+	*         </ul>
+	*/
+		public static ArrayList<Usuario> listarUsuario(){
 		return daoUsu.listarUsuario();
 	}
-			
+		
+	// -------------------------------
+	// Metodos relacionado con Película
+	// -------------------------------
+	/**
+	* Metodo para listar peliculas
+	* 
+	* @return
+	*         <ul>
+	*         <li>listarPelicula/li>
+	*         </ul>
+	*/					
 	public static ArrayList<Pelicula> listarPelicula() {
 		return daoPeli.listarPelicula();				
 	}
-	
+	/**
+	* Metodo para listar peliculas por categoria
+	* @param categoria
+	* @return
+	*         <ul>
+	*         <li>listarPeliculaCategoria/li>
+	*         </ul>
+	*/	
 	public static ArrayList<Pelicula> listarPeliculaCategoria(String categoria) {
 		return daoPeli.listarPeliculaCategoria(categoria);
 	}
-	
-	public static ArrayList<Pelicula> listarPeliculaNoVistas() {
+	/**
+	* Metodo para listar pelicula no vistas
+	* @return
+	*         <ul>
+	*         <li>listarPeliculaNoVista/li>
+	*         </ul>
+	*/	
+		public static ArrayList<Pelicula> listarPeliculaNoVistas() {
 		return daoPeli.listarPeliculaNoVista();
 	}
-
-	public static ArrayList<Usuario> listarUsuario(Usuario usu) {
-		return daoUsu.listarUsuario();
-	}
-	
+	/**
+	* Metodo para eliminar pelicula
+	* 
+	* @param pelicula
+	* 
+	*/		
+	public static void eliminarPelicula(int pelicula) {
+        daoPeli.eliminaPelicula(pelicula);
+    }
+	/**
+	* Metodo para insertar pelicula
+	* 
+	* @param peli
+	* 
+	*/	
 	public static void insertarPelicula(Pelicula peli) {
 		daoPeli.insertaPelicula(peli);
 	}
-	
+	/**
+	* Metodo para actualizar pelicula
+	* 
+	* @param peli
+	* 
+	*/
 	public static void actualizarPelicula(Pelicula peli) {
         daoPeli.actualizaPelicula(peli);
     }
-	
-	public static void listarPeliculaPorValoracion(int numero) {
-        daoPeli.listarPeliculaPorValoracion(numero);
+	/**
+	* Metodo para listar pelicula por valoración
+	* 
+	* @param numero
+	* @return
+	*         <ul>
+	*         <li>listarPeliculaNoVista/li>
+	*         </ul>
+	*/
+	public ArrayList<Pelicula> listarPeliculaPorValoracion(int numero){
+        return daoPeli.listarPeliculaPorValoracion(numero);
     }
 }
