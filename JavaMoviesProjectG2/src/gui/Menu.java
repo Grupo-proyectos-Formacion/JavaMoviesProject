@@ -189,6 +189,15 @@ public class Menu {
 		return eleccion;
 	}
 	
+	public static int menuModificarPelicula() {
+		int eleccion = LecturaDato.LeerInt("**********************************************\n"
+				+ "           ** ELIGE EL CAMPO A MODIFICAR:              **\n"
+				+ "           ** 0. Título                                **\n"
+				+ "           ** 1. Año		                              **\n"
+				+ "           **********************************************");
+		return eleccion;
+	}
+	
 
 
 }

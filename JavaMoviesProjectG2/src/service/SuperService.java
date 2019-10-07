@@ -49,6 +49,10 @@ public class SuperService {
 	public static ArrayList<Pelicula> listarPeliculaNoVistas() {
 		return daoPeli.listarPeliculaNoVista();
 	}
+	
+	public static ArrayList<Pelicula> listarPeliculaMasVistas(int numero) {
+		return daoPeli.listarPeliculaMasVista(numero);
+	}
 
 	public static ArrayList<Usuario> listarUsuario(Usuario usu) {
 		return daoUsu.listarUsuario();
@@ -65,4 +69,10 @@ public class SuperService {
 	public static ArrayList<Pelicula> listarPeliculaPorValoracion(int numero) {
         return daoPeli.listarPeliculaPorValoracion(numero);
     }
+	public static Usuario getUsuario(int id) {
+		return daoUsu.getUsuario(id);
+	}
+	public static Pelicula getPelicula(int id) {
+		return daoPeli.getPelicula(id);
+	}
 }

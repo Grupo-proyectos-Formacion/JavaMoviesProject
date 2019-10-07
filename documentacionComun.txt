@@ -1,0 +1,34 @@
+Sprint 1:
+-Daniel: me he encargado de estudiar como funciona GitHub, crear 
+el repositorio y Jira, para llevar el control de todas las funcionalidades
+que se van a realizar.
+-Julian: he creado el proyecto en eclipse y lo he subido al repositorio de  GitHub.
+-Luis: he creado la tabla de usuario y la de película, a parte de crear la parte
+gráfica del menú.
+-Sisa: He creado las clases de usuario y película, con su getters y sus setters.
+-Julian: he creado el método de crear usuario en DAO, para implementarlo en la capa service.
+-Daniel: he creado el método de borrar usuario en DAO, además de crearlo en service, junto
+con el de crearUsuario.
+-Luis: he creado las opciones y los métodos para los menús en la capa de GUI.
+-Sisa: he creado el método de modificar usuario en la capa de DAO, a parte de meterlo en la capa service.
+
+Sprint 2:
+- Daniel: he creado el método, para listar todos los usuarios, películas y mostrar
+las películas por categoría
+-Julian: He creado el metodo para insertar películas y leer el fichero para importar las
+películas a la base de datos desde el fichero TXT que nos ha proporcionado Antonio.
+-Sisa: he creado el método para modificar las películas en DAO y en service.
+-Luis: He creado los metodos para mostrar las películas por valoración y por visualizaciones.
+-Daniel: He modificado la clase de película añadiendole la categoría y las visualizaciones, además 
+de la valoración. Posteriormente he creado los constructores con estos atributos resperando los
+generados anteriormente.
+-Luis: he creado el método de listar películas no vistas en DAO y en Service.
+
+Sprint 3:
+Luis: he comprobado los loggers.
+Julian: he arreglado los metodos de impresion, poniendolos en la capa de control en vez
+de dejarlos en service o DAO.
+Sisa: he comentado más detalladamente el código.
+Daniel: he estado comprobando errores que pudiera haber e intentado corregirlos.
+
+ 

@@ -12,4 +12,5 @@ public interface DaoPelicula {
 	public void insertaListaPelicula(ArrayList<Pelicula> listaPelicula);
 	public ArrayList<Pelicula> listarPeliculaNoVista();
 	public ArrayList<Pelicula> listarPeliculaPorValoracion(int n);
+	public ArrayList<Pelicula> listarPeliculaMasVista(int n);
 }

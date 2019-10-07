@@ -135,7 +135,7 @@ public class Usuario {
 		public String toString() {
 			return "Usuario [idUsuario=" + idUsuario + ", nombreUsuario=" + nombreUsuario + ", apellidoUsuario="
 					+ apellidoUsuario + ", fechaNacimiento=" + fechaNacimiento + ", fechaRegistro=" + fechaRegistro
-					+ "]";
+					+ "]\n";
 		}
 		
 		

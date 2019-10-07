@@ -35,6 +35,12 @@ public class Pelicula {
 	 * Visualizaciones de la película
 	 */
 	private int visualizacionPelicula;
+	/**
+	 * constructor vacio
+	 */
+	public Pelicula() {
+		super();
+	}
 	
 	/**
 	 * Constructor con 3 parámetros

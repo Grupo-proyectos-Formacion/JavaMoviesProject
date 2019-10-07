@@ -1,6 +1,8 @@
 /**
  * @author Julian Bautista 
  * @author Sisa Romero
+ * @author Luis 
+ * @author Daniel
  */
 package model.dao;
 
@@ -12,6 +14,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import model.Pelicula;
+import model.Usuario;
 import utilities.Writer;
 
 public class DaoPeliculaIMPL implements DaoPelicula {
@@ -44,7 +47,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
                 throw new SQLException("Error adding Pelicula");
             }
         } catch (SQLException e) {
-        	Writer.escribirLoggerWarning("La consulta para insertar película ha fallado " + e.getMessage());
+        	Writer.escribirLoggerWarning("La consulta para insertar pelï¿½cula ha fallado " + e.getMessage());
         }
 		
 	}
@@ -65,10 +68,9 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             	System.out.println("La pelicula con id"+ id+ "ha sido borrada");
             }
         } catch (SQLException e) {
-        	Writer.escribirLoggerWarning("La consulta para eliminar película ha fallado " + e.getMessage());
+        	Writer.escribirLoggerWarning("La consulta para eliminar pelï¿½cula ha fallado " + e.getMessage());
 
         }
-		System.out.println(listarPelicula());
 		
 	}
 
@@ -84,7 +86,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
             return (new Pelicula(rs.getInt("idPelicula"), rs.getString("nombrePelicula"),
                     rs.getInt("anio"), rs.getString("categoriaPelicula")));
         } catch (SQLException e) {
-        	Writer.escribirLoggerWarning("La consulta para buscar película ha fallado " + e.getMessage());
+        	Writer.escribirLoggerWarning("La consulta para buscar pelï¿½cula por id ha fallado " + e.getMessage());
  
         }
 		return null;
@@ -114,7 +116,7 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            }
 	        } catch (SQLException e) {
 	        	
-	            Writer.escribirLoggerWarning("La sentencia para actualizar película ha fallado " + e.getMessage());
+	            Writer.escribirLoggerWarning("La sentencia para actualizar pelï¿½cula ha fallado " + e.getMessage());
 	        
 	        }
 	    }
@@ -139,7 +141,6 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	        	return pelis;
 		}catch(Exception e) {
 			Writer.escribirLoggerWarning("La consulta para listar todas las peliculas ha fallado: " + e.getMessage());
-			//e.printStackTrace();
 			}
 		return pelis;
 	}
@@ -175,12 +176,12 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	        	return peli;
 	        
 		}catch(Exception e) {
-			Writer.escribirLoggerWarning("La consulta para filtrar películas por categoria ha fallado" + e.getMessage());
+			Writer.escribirLoggerWarning("La consulta para filtrar pelï¿½culas por categoria ha fallado" + e.getMessage());
 			}
 		return peli;
 	}
 	/**
-	 * @return Devuelve arraylist de películas ordenadas por valoración
+	 * @return Devuelve arraylist de pelï¿½culas ordenadas por valoraciï¿½n
 	 */
 	@Override
 	public ArrayList<Pelicula> listarPeliculaPorValoracion(int n){
@@ -197,13 +198,13 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            return pelis;
 	        
 	    }catch(Exception e) {
-	    	Writer.escribirLoggerWarning("La consulta para listar películas por valoración ha fallado " + e.getMessage());
+	    	Writer.escribirLoggerWarning("La consulta para listar pelï¿½culas por valoraciï¿½n ha fallado " + e.getMessage());
 	        }
 	    return pelis;
 	}
 	
 	/**
-	 * @return Devuelve arraylist de películas no vistas
+	 * @return Devuelve arraylist de pelï¿½culas no vistas
 	 */
 	@Override
 	public ArrayList<Pelicula> listarPeliculaNoVista(){
@@ -220,7 +221,51 @@ public class DaoPeliculaIMPL implements DaoPelicula {
 	            return pelis;
 	        
 	    }catch(Exception e) {
-	    	Writer.escribirLoggerWarning("La consulta para listar películas no vistas ha fallado " + e.getMessage());
+	    	Writer.escribirLoggerWarning("La consulta para listar pelï¿½culas no vistas ha fallado " + e.getMessage());
+	        }
+	    return pelis;
+	}
+	
+	public  Pelicula getPelicula(int id) {
+		
+		Statement stmt;
+		Pelicula peli = new Pelicula();
+		try {
+			stmt = con.createStatement();
+			String query = "SELECT * FROM PELICULA WHERE IDPELICULA = "+ id +";" ;
+			ResultSet rs = stmt.executeQuery(query);
+			
+	        if(!rs.next()) {
+	        	throw new SQLException("no ha devuelto valores");
+	        }
+	        
+	        peli = new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula"));
+	        
+		} catch (SQLException e) {
+			Writer.escribirLoggerWarning("La consulta para regresar una pelï¿½cula especifica ha fallado: " + e.getMessage());
+	
+		}
+		
+        return peli;
+	}
+	
+	@Override
+	public ArrayList<Pelicula> listarPeliculaMasVista(int n){
+	    
+	    ArrayList<Pelicula> pelis = new ArrayList<>();
+	    try {
+	        Statement stmt = con.createStatement();
+	        String query = "SELECT * FROM pelicula ORDER BY visualizacionPelicula DESC LIMIT "+ n;
+	        ResultSet rs = stmt.executeQuery(query);
+	        while (rs.next()) {
+	            pelis.add(new Pelicula(rs.getInt("idPelicula"), rs.getString("tituloPelicula"),
+	                    rs.getInt("anyoPelicula"), rs.getString("categoriaPelicula"), rs.getInt("valoracionPelicula"), rs.getInt("visualizacionPelicula")));
+	        }
+	            return pelis;
+	        
+	    }catch(Exception e) {
+	    	Writer.escribirLoggerWarning("La consulta para listar pelï¿½culas por numero de visualizaciones " + e.getMessage());
 	        }
 	    return pelis;
 	}
